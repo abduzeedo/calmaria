@@ -31,6 +31,7 @@ h1,h2,h3,h4,h5{
 }
 h1{
     font-size: var(--h1);
+    line-height: 120%;
 }
 h2{
     font-size: var(--h2);
@@ -116,7 +117,7 @@ section{
     background: var(--background);
     color:#fff;
     margin-top:-528px;
-    padding:528px 0 0 0 ;
+    padding:440px 0 0 0 ;
 }
 footer{
     margin-top: 72px;
@@ -160,7 +161,7 @@ img.hero3{
 }
 #s1 .playBadge{
     bottom: auto;
-    top:580px;
+    top:610px;
 }
 .playBadge img{
     width: 100%;
