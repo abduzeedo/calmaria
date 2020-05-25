@@ -48,6 +48,7 @@ h5{
 }
 a{
     color: var(--primary-color);
+    text-decoration: none;
 }
 p{
     margin-bottom: 24px;
@@ -59,6 +60,17 @@ img{
 span{
     display: block;
     margin: 8px 0 24px 0;
+}
+li{
+    font-size: 32px;
+    line-height: 48px;
+    margin-bottom: 16px;
+}
+a{
+    border-bottom: 2px solid #FEED07;
+}
+li.soon{
+    opacity: .5;
 }
 /* 
 Sections
@@ -106,6 +118,11 @@ section{
     margin-top:-528px;
     padding:528px 0 0 0 ;
 }
+footer{
+    margin-top: 72px;
+    opacity: .5;
+    font-size: 14px;
+}
 /* 
 Images
 */
@@ -133,6 +150,21 @@ img.hero3{
     width: 1280px;
     height: auto;
     z-index: 100000;
+}
+.playBadge{
+    position: absolute;
+    width: 180px;
+    border-bottom: none;
+    right: 32px;
+    bottom: 180px;
+}
+#s1 .playBadge{
+    bottom: auto;
+    top:580px;
+}
+.playBadge img{
+    width: 100%;
+    height: auto;
 }
 /* 
 Keyframe Animation
@@ -179,24 +211,3 @@ Animation
     bottom: 4px;
     width: 100%;
 }
-/* @media only screen and (min-width:0px) and (max-width: 479px) {
-    .animation{
-        top:48.5%;
-    }
-}
-@media only screen and (min-width:480px) and (max-width: 767px) {
-    .animation{
-        top:43.5%;
-    }
-}
-@media only screen and (min-width:768px) and (max-width: 1024px) {
-    .animation{
-        top:41.5%;
-    }
-}
-@media only screen and (min-width:1025px) and (max-width: 1440px) {
-    .animation{
-        top:38.5%;
-    }
-} */
-
