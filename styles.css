@@ -220,7 +220,7 @@ Animation
 Responsive Styles 
 */
 /* Mobile */
-@media only screen and (min-width:0px) and (max-width:1023px) {
+@media only screen and (min-width:0px) and (max-width:767px) {
     :root{
         /* Colors */
         --h1: 32px;
@@ -326,7 +326,7 @@ Responsive Styles
 }
 /* Tablet*/
 /* Mobile */
-/* @media only screen and (min-width:768px) and (max-width: 1023px) {
+@media only screen and (min-width:768px) and (max-width: 1023px) {
     p{
         max-width: 100%;
     }
@@ -417,4 +417,4 @@ Responsive Styles
         margin-top: -430px;
         padding: 320px 0 0 0;
     }
-} */
+}
