@@ -56,7 +56,7 @@ p{
     max-width: 66%;
 }
 img{
-
+    width: 100%;
 }
 span{
     display: block;
@@ -76,9 +76,13 @@ li.soon{
 /* 
 Sections
 */
+.wrapper{
+    overflow-x: hidden;
+}
 section{
     display: block;
-    min-width: 1280px;
+   
+    
 }
 .container{
     margin:0 auto;
@@ -117,7 +121,7 @@ section{
     background: var(--background);
     color:#fff;
     margin-top:-528px;
-    padding:440px 0 0 0 ;
+    padding:440px 0 0 0;
 }
 footer{
     margin-top: 72px;
@@ -212,3 +216,205 @@ Animation
     bottom: 4px;
     width: 100%;
 }
+/* 
+Responsive Styles 
+*/
+/* Mobile */
+@media only screen and (min-width:0px) and (max-width:1024px) {
+    :root{
+        /* Colors */
+        --h1: 32px;
+        --h2: 28px;
+        --h3: 24px;
+        --h4: 20px;
+        --h5: 18px;
+        --body: 18px;
+        --body2: 14px;
+        --base-margin: 16px;
+        --base-margin_2: 32px;
+    }
+    p{
+        max-width: 100%;
+    }
+    section{
+        min-width: 100%;
+    }
+    .heroImage{
+        width: 100%;
+        transform: scale(1.8);
+        transform-origin: center top;
+        margin-top: 24px;
+    }
+    img.hero{
+        width: 100%;
+        z-index: 10000;
+    }
+    img.hero2{
+        display: block;
+        margin-top: 0;
+        width: 100%;
+        transform: scale(1.5);
+        transform-origin: center top;
+    }
+    img.hero3{
+        display: block;
+        margin-top: 0;
+        width: 100%;
+        transform: scale(1.5);
+        transform-origin: center top;
+
+    }
+    #s1{
+        z-index: 100;
+    }
+    #s1 h2{
+        position: relative;
+        top:0;
+        margin-top: 16px;
+        font-size: 24px;
+    }
+    #s1 .playBadge{
+        top:84px;
+        width: 140px;
+    }
+    #s2{
+        margin-top: -22%;
+        padding: 56% 0 0 0;
+       
+    }
+    #s2 .container p:nth-child(3){
+        margin-bottom: 150px;
+    }
+    #s3{
+        margin-top: -50%;
+        padding: 70% 0 0 0;
+    }
+    #s3 p{
+        margin-bottom: 72px;
+    }
+    #s4{
+        margin-top: -25%;
+        padding: 35% 0 0 0;
+    }
+    .animation{
+        top: 32%;
+        width: 30%;
+        left: calc(50% - 15%);
+        height: 30vw;
+    }
+    .animation img.lines {
+        bottom: auto;
+        width: 100%;
+        top: 42%;
+    }
+    li{
+        font-size: 24px;
+        line-height: 48px;
+        margin-bottom: 0px;
+    }
+    #s4 .playBadge {
+        bottom: 0;
+        position: relative;
+        display: block;
+        width: 180px;
+        margin-left: 24px;
+        margin-top: 24px;
+    }
+    footer {
+        margin-top: 32px;
+    }
+}
+/* Tablet*/
+/* Mobile */
+/* @media only screen and (min-width:768px) and (max-width: 1023px) {
+    p{
+        max-width: 100%;
+    }
+    section{
+        min-width: 768px;
+    }
+    .heroImage{
+        width: 768px;
+    }
+    img.hero{
+        width: 768px;
+    }
+    img.hero2{
+        width: 768px;
+    }
+    img.hero3{
+        width: 768px;
+    }
+    #s1 h2 {
+        position: absolute;
+        bottom: 462px;
+    }
+    #s1 .playBadge{
+        top: 370px;
+    }
+    #s2{
+        margin-top:-450px;
+        padding:320px 0 0 0;
+    }
+    #s2 .container p:nth-child(3){
+        margin-bottom: 150px;
+    }
+    #s3{
+        margin-top: -525px;
+        padding: 435px 0 0 0;
+    }
+    #s3 p{
+        margin-bottom: 72px;
+    }
+    #s4{
+        margin-top: -332px;
+    padding: 270px 0 0 0;
+    }
+    .animation{
+        display: none;
+    }
+}
+@media only screen and (min-width:1024px) and (max-width: 1280px) {
+    section{
+        min-width: 1024px;
+    }
+    .heroImage{
+        width: 1024px;
+    }
+    img.hero{
+        width: 1024px;
+    }
+    img.hero2{
+        width: 1024px;
+    }
+    img.hero3{
+        width: 1024px;
+    }
+    .playBadge{
+
+    }
+    .playBadge img{
+
+    }
+    .animation{
+        display: none;
+    }
+    #s1 h2 {
+        bottom: 602px;
+    }
+    #s1 .playBadge{
+        top: 493px;
+    }
+    #s2{
+        margin-top: -588px;
+        padding: 465px 0 0 0;
+    }
+    #s3{
+        margin-top: -692px;
+        padding: 575px 0 0 0;
+    }
+    #s4{
+        margin-top: -430px;
+        padding: 320px 0 0 0;
+    }
+} */
