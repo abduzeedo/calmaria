@@ -220,7 +220,7 @@ Animation
 Responsive Styles 
 */
 /* Mobile */
-@media only screen and (min-width:0px) and (max-width:1024px) {
+@media only screen and (min-width:0px) and (max-width:1023px) {
     :root{
         /* Colors */
         --h1: 32px;
