@@ -1,0 +1,226 @@
+:root{
+    /* Colors */
+    --background: #000000;
+    --primary-color: #ffffff;
+    --blur-background:rgba(0,0,0,.2);
+    --font-family: 'Inter', Helvetica, Arial,sans-serif;
+    --h1: 112px;
+    --h2: 28px;
+    --h3: 24px;
+    --h4: 72px;
+    --h5: 56px;
+    --body: 24px;
+    --body2: 18px;
+    --base-margin: 16px;
+    --base-margin_2: 32px;
+}
+.day:root{
+    --background: #fff;
+    --primary-color: #000;
+    --blur-background:rgba(255,255,255,.2);
+}
+body{
+    font-family: var(--font-family);
+    font-size: var(--body);
+    color: var(--primary-color);
+    background: var(--background);
+    
+}
+/* 
+Typography
+*/
+h1,h2,h3,h4,h5{
+    font-weight: 900;
+}
+h1{
+    font-size: var(--h1);
+}
+h2{
+    font-size: var(--h2);
+    line-height: 140%;
+}
+h3{
+    font-size: var(--h3);
+    line-height: 120%;
+}
+h4{
+   font-size: var(--h4); 
+}
+h5{
+   font-size: var(--h5); 
+}
+a{
+    color: var(--primary-color);
+}
+/* 
+Keyframe Animation
+*/
+@keyframes breathing{
+    0%{
+        transform: scale(1); 
+    }
+    19.04%{
+        transform: scale(1.8);
+    }
+    53%{
+        transform: scale(1.8);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+/* 
+App container 
+*/
+.container{
+    position: absolute;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden !important;
+}
+section#app{
+    position: fixed;
+    left: var(--base-margin);
+    right: var(--base-margin);
+    top: var(--base-margin);
+    bottom: calc(var(--base-margin_2) * 2);
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+/* 
+Custom elements
+*/
+#repetition,#title,#instructions,#timer,.bottomLeft{
+    position: absolute;
+    z-index: 1000;
+}
+#repetition{
+    right: 0;
+    top: 0;
+}
+#title{
+    left: 0;
+    top: 0;
+}
+#instructions,.bottomLeft{
+    left: 0;
+    bottom: 0;
+}
+#timer{
+    bottom: 0;
+    right: 0;
+}
+#circle{
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+    margin-top: 10vw;
+    background: linear-gradient(#FFF500,#E60098);
+    border-radius: 50%;
+}
+#circle.animate{
+    animation-fill-mode: forwards;
+    animation-name: breathing;
+    animation-duration: 19s;
+    animation-iteration-count: 4;
+    animation-timing-function: ease-in-out;
+}
+#graphic{
+    background: var(--blur-background);
+    border-top: 1px solid var(--blur-background);
+    height: 35vh;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    left:  calc(-1*var(--base-margin));
+    right:  calc(-1*var(--base-margin));
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    display: none;
+    
+}
+#graphic80{
+    height: 35vh;
+    top: 48vh;
+    position: absolute;
+    bottom: 0;
+    left:  calc(-1*var(--base-margin));
+    right:  calc(-1*var(--base-margin));
+}
+#graphic80 img{
+    width: 100%;
+    height: auto;
+}
+.day #graphic80{
+    filter: invert();
+}
+/* 
+Congratulations page
+*/
+section#bs_congrats,
+section#bs_about{
+    z-index: 100000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--background);
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    transition: transform 488ms ease-in-out;
+    transform: translateY(110vh);
+    padding: 0 var(--base-margin);
+}
+section#bs_congrats.active,
+section#bs_about.active{
+    transform: translateY(0);
+}
+#bs_congrats h2{
+    font-size: 40px;
+    position: absolute;
+    left: var(--base-margin);
+    right: var(--base-margin);
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
+.bottomLeft{
+    bottom: calc(var(--base-margin_2) * 2);
+    left: var(--base-margin);
+}
+.bottomRight{
+    bottom: calc(var(--base-margin_2) * 2);
+    right: var(--base-margin);
+}
+.footer{
+    font-size: 14px;
+    position: absolute;
+    opacity: .6;
+}
+.close{
+    position: absolute;
+    right: var(--base-margin);
+    top: var(--base-margin);
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 48px;
+    font-weight: 900;
+}
+.content{
+    position: absolute;
+    left: var(--base-margin);
+    right: var(--base-margin);
+    font-size: 18px;
+    line-height: 26px;
+}
+.content h2{
+    font-size: 48px;
+}
+.content span{
+    display: block;
+    margin: 8px 0 32px 0;
+}
