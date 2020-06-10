@@ -6,7 +6,7 @@ var congrats = document.getElementById("bs_congrats");
 var about = document.getElementById("bs_about");
 var congratsClose = document.getElementById("close");
 var aClose = document.getElementById("aClose");
-var cTimer = 1;
+var cTimer = 4;
 var counter = 1
 var repetition = 1
 var darkTheme = true;
@@ -57,23 +57,23 @@ var callback = function () {
 function animateGraphic(i) {
     if (repetition < 5) {
         counter++;
-        timer.innerHTML = "0" +  cTimer++
+        timer.innerHTML = "0" +  cTimer--
         if (counter == 4) {
-            cTimer = 1;
+            cTimer = 7;
             tNegativeCounter = 8
             changeInstructions(2);
         }
         if (counter == 11) {
-            cTimer = 1;
+            cTimer = 8;
             tNegativeCounter = 9
             changeInstructions(3);
         }
         if (counter == 19) {
             counter = 0;
-            cTimer = 1;
+            cTimer = 4;
             tNegativeCounter = 5
             repetition++
-            repetitions.innerHTML = "0" + repetition;
+            repetitions.innerHTML = "0" + (5 - repetition);
             changeInstructions(1);
         }
         
@@ -93,16 +93,16 @@ function changeInstructions(i) {
 // Start Animation
 //
 function starAnimation() {
-    timer.innerHTML = "0" +  cTimer++
+    timer.innerHTML = "0" +  cTimer--
     instructions.innerHTML = directions[1];
     circle.classList.add("animate");
-    repetitions.innerHTML = "0" + repetition;
+    repetitions.innerHTML = "0" + (5 - repetition);
 }
 // 
 // Reset Animation
 //
 function resetAnimation() {
-    var cTimer = 1;
+    var cTimer = 4;
     var counter = 1
     var repetition = 0
     instructions.innerHTML = directions[0];
@@ -114,7 +114,7 @@ function resetAnimation() {
 function congratulations(){
     clearInterval(secCounter);
     congrats.classList.add("active");
-    var cTimer = 1;
+    var cTimer = 4;
     var counter = 1
     var repetition = 0
     instructions.innerHTML = directions[0];
