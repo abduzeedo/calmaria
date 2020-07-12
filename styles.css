@@ -161,11 +161,23 @@ img.hero3{
     width: 180px;
     border-bottom: none;
     right: 32px;
+    bottom: 260px;
+}
+.appstoreBadge{
+    position: absolute;
+    width: 157px;
+    border-bottom: none;
+    right: 32px;
     bottom: 180px;
+    padding: 12px;
 }
 #s1 .playBadge{
     bottom: auto;
     top:610px;
+}
+#s1 .appstoreBadge{
+    bottom: auto;
+    top:543px;
 }
 .playBadge img{
     width: 100%;
@@ -274,8 +286,14 @@ Responsive Styles
         font-size: 24px;
     }
     #s1 .playBadge{
-        top:84px;
-        width: 140px;
+        top:120px;
+        width: 110px;
+        right: 37px;
+    }
+    #s1 .appstoreBadge{
+        top: 75px;
+        width: 96px;
+        right: 32px;
     }
     #s2{
         margin-top: -22%;
@@ -320,6 +338,12 @@ Responsive Styles
         margin-left: 24px;
         margin-top: 24px;
     }
+    #s4 .appstoreBadge{
+        bottom: 0;
+        position: relative;
+        display: block;
+        margin-left: 24px;
+    }
     footer {
         margin-top: 32px;
     }
@@ -351,6 +375,10 @@ Responsive Styles
     }
     #s1 .playBadge{
         top: 370px;
+    }
+    #s1 .appstoreBadge{
+        bottom: auto;
+        top:302px;
     }
     #s2{
         margin-top:-450px;
@@ -404,6 +432,10 @@ Responsive Styles
     }
     #s1 .playBadge{
         top: 493px;
+    }
+    #s1 .appstoreBadge{
+        bottom: auto;
+        top:426px;
     }
     #s2{
         margin-top: -588px;
