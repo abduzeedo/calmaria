@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-
+import PlaygroundSupport
 struct CalmariaHome: View {
     // Breathe
     @State var breathe = false
@@ -62,35 +62,36 @@ struct CalmariaHome: View {
                     .edgesIgnoringSafeArea(.all)
                 // Circle + Graphics
                 ZStack{
-                     Image("sun")
+                    Image(uiImage: UIImage(named: "sun")!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                            .padding()
-                            .frame(height:(self.exercise ? geometry.size.width : geometry.size.width/1.5))
-                            .animation(Animation.easeInOut(duration: (self.exercise ? 4 : 8)))
-                            .onTapGesture {
-                                self.impactLight.impactOccurred()
-                                self.startBreathing()
-                        }
+                        .padding()
+                        .frame(height:(self.exercise ? geometry.size.width : geometry.size.width/1.5))
+                        .animation(Animation.easeInOut(duration: (self.exercise ? 4 : 8)))
+                        .onTapGesture {
+                            self.impactLight.impactOccurred()
+                            self.startBreathing()
+                    }
                     ZStack{
                         if(self.colorScheme == .dark ){
-                            if(self.theme80s){                        Image("lines").resizable().aspectRatio(contentMode: .fit).frame(maxWidth:.infinity).offset(y:100)
-            
+                            if(self.theme80s){                        
+                                Image(uiImage: UIImage(named: "sunlines")!).resizable().aspectRatio(contentMode: .fit).frame(maxWidth:.infinity).offset(y:100)
+                                
                             }
                             else{
-                            VisualEffectView(effect: UIBlurEffect(style: .prominent))
-                                .frame(height:geometry.size.height/1.8)
-                                .offset(y:geometry.size.height/3.8)
+                                VisualEffectView(effect: UIBlurEffect(style: .prominent))
+                                    .frame(height:geometry.size.height/1.8)
+                                    .offset(y:geometry.size.height/3.8)
                             }
                             
                         }
                         else{
-                            if(self.theme80s){                          Image("lines").resizable().aspectRatio(contentMode: .fit).frame(width:geometry.size.width).offset(y:100).colorInvert()
+                            if(self.theme80s){                          Image(uiImage: UIImage(named: "sunlines")!).resizable().aspectRatio(contentMode: .fit).frame(width:geometry.size.width).offset(y:100).colorInvert()
                             }
                             else{
-                            VisualEffectView(effect: UIBlurEffect(style: .light))
-                                .frame(height:geometry.size.height/1.8)
-                                .offset(y:geometry.size.height/3.8)
+                                VisualEffectView(effect: UIBlurEffect(style: .light))
+                                    .frame(height:geometry.size.height/1.8)
+                                    .offset(y:geometry.size.height/3.8)
                             }
                         }
                     }
@@ -130,14 +131,14 @@ struct CalmariaHome: View {
                             .padding(.bottom,16)
                         Spacer()
                         if(self.breathe){
-                        Text("END NOW")
-                            .font(.caption)
-                            .fontWeight(.bold).padding(.vertical, 12).padding(.horizontal,12).background(Color("primary"))
-                            .foregroundColor(Color("background1"))
-                            .cornerRadius(24)
-                            .onTapGesture {
-                                self.impactLight.impactOccurred()
-                                self.endExercise()
+                            Text("END NOW")
+                                .font(.caption)
+                                .fontWeight(.bold).padding(.vertical, 12).padding(.horizontal,12).background(Color("primary"))
+                                .foregroundColor(Color("background1"))
+                                .cornerRadius(24)
+                                .onTapGesture {
+                                    self.impactLight.impactOccurred()
+                                    self.endExercise()
                             }
                         }
                         Spacer()
@@ -147,17 +148,17 @@ struct CalmariaHome: View {
                             .frame(width:120, alignment: .trailing)
                         
                     }.padding(.horizontal)
-                    }.frame(maxWidth:712).frame(maxHeight:geometry.size.height)
-                // Modal Screens
+                }.frame(maxWidth:712).frame(maxHeight:geometry.size.height)
+                    // Modal Screens
                     .sheet(isPresented: self.$showModal,onDismiss: {
                         UserDefaults.standard.set(self.theme80s, forKey: "t80s")
                     }){
-                    if(self.showAbout){
-                        AboutView(viewAbout : self.$viewAbout, showAbout: self.$showAbout, theme80s: self.$theme80s).edgesIgnoringSafeArea(.all)
-                    }
-                    if(self.showCongrats){
-                        CongratsView(viewState: self.$viewState, showCongrats: self.$showCongrats, playConfetti: self.$playConfetti, defaults: self.$defaults, labelCompleted: self.$labelCompleted).edgesIgnoringSafeArea(.all)
-                    }
+                        if(self.showAbout){
+                            AboutView(viewAbout : self.$viewAbout, showAbout: self.$showAbout, theme80s: self.$theme80s).edgesIgnoringSafeArea(.all)
+                        }
+                        if(self.showCongrats){
+                            CongratsView(viewState: self.$viewState, showCongrats: self.$showCongrats, playConfetti: self.$playConfetti, defaults: self.$defaults, labelCompleted: self.$labelCompleted).edgesIgnoringSafeArea(.all)
+                        }
                 }
             }.onReceive(self.timer) { _ in
                 if(self.repetitions > 0){
@@ -207,9 +208,9 @@ struct CalmariaHome: View {
             self.playConfetti = 0
             self.labelCounter = 4
         }
-//        else{
-//            self.endExercise()
-//        }
+        //        else{
+        //            self.endExercise()
+        //        }
     }
     func endExercise(){
         self.breathe = false
@@ -280,7 +281,7 @@ struct AboutView: View {
                 HStack{
                     Toggle(isOn: self.$theme80s) {
                         Text("Rock the 80s theme").font(.headline)
-                        }.padding()
+                    }.padding()
                     
                 }
                 Divider().padding(.horizontal)
@@ -304,8 +305,7 @@ struct CongratsView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack{
-                LottieView(name: "confetti", playConfetti: self.$playConfetti)
-                    .edgesIgnoringSafeArea(.all)
+                //LottieView(name: "confetti", playConfetti: self.$playConfetti).edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading){
                     HStack{
                         Spacer()
@@ -337,30 +337,4 @@ struct CongratsView: View {
         }
     }
 }
-
-struct CalmariaHome_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            CalmariaHome()
-              .previewDevice(PreviewDevice(rawValue: "iPhone SE"))
-              .previewDisplayName("iPhone SE")
-
-            CalmariaHome()
-              .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
-              .previewDisplayName("iPhone 11")
-            
-            CalmariaHome()
-             .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro"))
-             .previewDisplayName("iPhone 11 Pro")
-            
-            CalmariaHome()
-            .previewDevice(PreviewDevice(rawValue: "iPad Pro (11-inch) (2nd generation)"))
-            .previewDisplayName("iPad Pro 11")
-            
-            CalmariaHome()
-            .previewDevice(PreviewDevice(rawValue: "iPad Air (3rd generation)"))
-            .previewDisplayName("iPad Air")
-            
-        }
-    }
-}
+PlaygroundPage.current.setLiveView(CalmariaHome().frame(width:640))
