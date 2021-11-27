@@ -24,6 +24,7 @@ body{
     background: var(--background);
     color: var(--primary-color);
     margin: 0%;
+    background: url(images/terral_mov_placeholder.jpg);
 }
 section#cover{
     position: absolute;
