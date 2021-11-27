@@ -1,0 +1,148 @@
+:root{
+    /* Colors */
+    --background: #000000;
+    --background_inverted: #ffffff;
+    --primary-color: #ffffff;
+    --primary-inverted: #000000;
+    --blur-background:rgba(0,0,0,.2);
+    --font-family: futura-pt, sans-serif;
+    --h1: 48px;
+    --h2: 34px;
+    --h3: 32px;
+    --h4: 28px;
+    --h5: 24px;
+    --body: 20px;
+    --body2: 16px;
+    --base-margin: 16px;
+    --base-margin_2: 32px;
+}
+body{
+    font-family: var(--font-family);
+    font-size: var(--body);
+    padding: 0;
+    line-height: 26px;
+    background: var(--background);
+    color: var(--primary-color);
+    margin: 0%;
+}
+section#cover{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    padding:48px;
+}
+button{
+    height: 64px;
+    width: 200px;
+    color: var(--primary-color);
+    font-family: futura-pt, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    background: #5d656e91;
+
+}
+img.logo{
+    width: 100%;
+    max-width: 220px;
+}
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+/* 
+Typography
+*/
+h1,h2,h3,h4,h5{
+    font-weight: 900;
+    letter-spacing: .03em;
+}
+h1{
+    font-size: var(--h1);
+    line-height: 120%;
+}
+h2{
+    font-size: var(--h2);
+    line-height: 140%;
+}
+h3{
+    font-size: var(--h3);
+    line-height: 120%;
+}
+h4{
+   font-size: var(--h4); 
+   font-weight: 500;
+}
+h5{
+   font-size: var(--h5); 
+}
+a{
+    color: var(--primary-color);
+    text-decoration: none;
+}
+p{
+    margin-bottom: 24px;
+    max-width: 66%;
+}
+img{
+}
+span{
+    display: block;
+    margin: 8px 0 24px 0;
+}
+li{
+    font-size: 32px;
+    line-height: 48px;
+    margin-bottom: 16px;
+}
+a{
+    
+}
+li.soon{
+    opacity: .5;
+}
+/* 
+Sections
+*/
+
+/* 
+Responsive Styles 
+*/
+/* Mobile */
+@media only screen and (min-width:0px) and (max-width:767px) {
+    :root{
+        /* Colors */
+        --h1: 32px;
+        --h2: 28px;
+        --h3: 24px;
+        --h4: 20px;
+        --h5: 18px;
+        --body: 18px;
+        --body2: 14px;
+        --base-margin: 16px;
+        --base-margin_2: 32px;
+    }
+}
+/* Tablet*/
+/* Mobile */
+@media only screen and (min-width:768px) and (max-width: 1023px) {
+  
+}
+@media only screen and (min-width:1024px) and (max-width: 1280px) {
+    
+}
