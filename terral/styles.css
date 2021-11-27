@@ -61,7 +61,7 @@ img.stamp{
     position: absolute;
     right: 5vw;
     top: 10vh;
-    opacity: .5;
+    opacity: .7;
     width: 150px;
     height: auto;
 }
@@ -151,7 +151,7 @@ Responsive Styles
         height: auto;
     }
 }
-@media all and (orientation: landscape) {
+@media all and (max-height:640px) and (orientation: landscape) {
     section#cover{
         padding: 24px;
     }
