@@ -1,40 +1,486 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=0">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=0" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167564527-1"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-167564527-1"
+    ></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-    gtag('config', 'UA-167564527-1');
+      gtag("config", "UA-167564527-1");
     </script>
-    <link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="https://use.typekit.net/sbl7ghc.css">
-    <link rel="stylesheet" href="../reset.css">
-    <link rel="stylesheet" href="styles.css">
-    
-<title>Terral — Parfum</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-        <!-- The video -->
-    <video autoplay muted loop id="myVideo" poster="images/terral_mov_placeholder.jpg">
-        <source src="images/terral_mov_bg.mov" type="video/mp4">
+    <link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="https://use.typekit.net/sbl7ghc.css" />
+    <link rel="stylesheet" href="../reset.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <title>Terral — Parfum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <!-- The video -->
+    <video
+      autoplay
+      muted
+      loop
+      id="myVideo"
+      poster="images/terral_mov_placeholder.jpg"
+    >
+      <source src="images/terral_mov_bg.mov" type="video/mp4" />
     </video>
-    <section id="cover">
-        <h4><a href="http://calmaria.app">Calmaria</a></h4>
-        <img src="images/terral_logo.svg" class="logo"/>
-        <img src="images/stamp.svg" class="stamp"/>
-        <button>Coming soon </button>
+
+    <section id="container">
+      <section id="cover">
+        <h2><a href="http://calmaria.app">Calmaria</a></h2>
+        <img src="images/terral_logo.svg" class="logo" />
+        <img src="images/stamp.svg" class="stamp" />
+        <button><a href="#details">Shop Now</a></button>
+      </section>
+      <section id="details">
+        <nav>
+          <h2><a href="#cover">Terral</a></h2>
+          <ul>
+            <li><a href="#part1">The parfum</a></li>
+            <li><a href="#part2">Ingredients</a></li>
+            <li><a href="#part3">Our story</a></li>
+            <li><a href="#part4">FAQ</a></li>
+          </ul>
+        </nav>
+        <main>
+          <div id="part1" class="part1 part">
+            <div class="intro">
+              <p>
+                Terral is Portuguese for the offshore breeze that originates in
+                mountain woods.
+              </p>
+              <p>
+                Intended for use with our breathing app, Calmaria, Terral is a
+                gender-neutral fragrance, flexible for layering or use on its
+                own. For anyone needing stress-relief and tranquility, Terral is
+                a gentle reminder to breathe in and take time for yourself.
+              </p>
+            </div>
+            <div class="bottom">
+              <h5>TO CALM THE MIND</h5>
+              <p>Hinoki, Pink Grapefruit, Black Pepper</p>
+              <h5>TO REDUCE ANXIETY</h5>
+              <p>Hiba Cedarwood, Lavender, Damask Rose</p>
+              <h5>FOR RELAXATION + PEACEF</h5>
+              <p>Haitian Vetiver, Sandalwood</p>
+            </div>
+          </div>
+
+          <div id="part2" class="part2 part">
+            <h3>Ingredients</h3>
+            <p>Triethyl Citrate Essential oil blend including: </p>
+            <ul>
+                <li>Citrus paradisi (Pink Grapefruit),</li>
+                <li>Thujopsis Dolabrata (Hiba Cedarwood),</li>
+                <li>Piper Nigrum (Black Pepper),</li>
+                <li>Santalum spicatum (Sandalwood),</li>
+                <li>Chamaecyparis obtusa (Hinoki),</li>
+                <li>Vetiveria zizanioides (Haitian Vetiver),</li>
+                <li>Lavandula angustifolia (Lavender),</li>
+                <li>Rosa x damascena (Damask Rose),</li>
+                <li>Fragrance.</li>
+            </ul>            
+            <p class="secondary">
+              Some friendly cautions: Terral parfum contains essential oils.
+              Please conduct a patch test before using. Discontinue use if
+              irritation occurs and seek the advice of a healthcare
+              practitioner. If you are pregnant, please seek the advice of a
+              healthcare practitioner before wearing fragrances which contain
+              essential oils. Paraben, sulfate and phthalate free. 100% Vegan
+              and Cruelty-free.
+            </p>
+          </div>
+
+          <div id="part3" class="part3 part">
+            <h3>Our story</h3>
+            <p>
+              Ibby Sasso has had a lifelong passion for fragrance and the
+              benefits that scent therapy can bring to one’s overall well-being
+              and mood. When Ibby and Fabio welcomed their now five year old son
+              they were told that he was immunocompromised and would need a stem
+              cell transplant in an effort to provide him with a
+              fully-functioning immune system. This involved a four month stay
+              in the hospital while their son underwent treatment and ongoing
+              special care to this day. One way that Ibby coped and continues to
+              manage the anxiety, stress and worry of having an
+              immunocompromised child is through aromatherapy and taking small
+              moments to breathe and re-center.
+            </p>
+            <p>
+              Fabio has never been one to sit still. Like most of the world’s
+              population, with the onset of the pandemic he was finding himself
+              overcome with anxiety, stress and worry. He was inspired to find a
+              way to help himself while also encouraging others to focus on the
+              simple act of breathing to calm the mind and reset. This resulted
+              in the launch of Calmaria, an extremely simple breathing app that
+              is meant to help individuals focus on their breath as a tool for
+              improved balance and wellness.
+            </p>
+            <p>
+              Over the past year, Ibby and Fabio have married their passions to
+              launch Terral, a small-batch, non-gendered fragrance, made with
+              botanical ingredients and aroma molecules. Terral is Portuguese
+              for the offshore breeze that originates in mountain woods. This
+              premium, limited-edition parfum is intended for use with the
+              breathing app, Calmaria. Flexible for layering or use on its own,
+              Terral is beneficial to anyone needing stress-relief and
+              tranquility while serving as a gentle reminder to breathe in and
+              take time for yourself.
+            </p>
+            <p>
+              The pair partnered with L'Aromatica, a Latina-owned and operated
+              artisan fragrance company based in Northern California on this
+              exclusive fragrance that includes top notes of Hinoki, Pink
+              Grapefruit and Black Pepper, complemented by heart notes of Hiba
+              Cedarwood, Lavender, Damask Rose and a base of Haitian Vetiver and
+              Sandalwood.
+            </p>
+          </div>
+
+          <div id="part4" class="part4 part">
+            <h3>FAQ</h3>
+            <h4><strong>SHOP INFO</strong></h4>
+
+            <ul>
+              <li>
+                <strong>Where can I buy your product in person?</strong
+                >&nbsp;<br />
+                We are an online store, but check our product is sold in a few
+                select boutiques here in Oakland.&nbsp;
+              </li>
+            </ul>
+
+            <h4><strong>ORDER INFO</strong></h4>
+
+            <ul>
+              <li>
+                <strong
+                  >I’ve placed my order already- can I make changes?</strong
+                >&nbsp;<br />
+                Not a problem! Email us at
+                <a href="mailto:ibby@abdz.do">ibby@abdz.do</a>. If your order
+                has already shipped please know we may not be able to
+                accommodate but we’ll do our best.
+              </li>
+              <li>
+                <strong>My order is a gift- can I send a note?</strong
+                >&nbsp;<br />
+                Of course, we love sending gifts! Please know we never include
+                receipts in our orders. When checking out, you can leave a
+                personalized message for the receiver, which we will include on
+                a handwritten note in your package.
+              </li>
+              <li>
+                <strong>My order arrived damaged - what do I do?</strong
+                >&nbsp;<br />
+                Oh no! We're so sorry to hear that. We pack all of our orders by
+                hand.&nbsp; However, sometimes things happen in transit that are
+                out of our control. If you received something that was damaged
+                in transit, please email ibby@abdz.do with your order number and
+                a picture of the damaged item - we will send out a replacement
+                ASAP.
+              </li>
+            </ul>
+
+            <h4><strong>SHIPPING INFO</strong></h4>
+
+            <ul>
+              <li>
+                <strong>Do you ship internationally?</strong><br />
+                CURRENTLY JUST SHIPPING ACROSS THE CONTINENTAL U.S.A.
+              </li>
+              <li>
+                <strong>When will my order ship?</strong><br />
+                If you select flat rate UPS, your order will typically ship
+                within 2-3 business days. If you need your order faster, no
+                problem.&nbsp; Please select EXPRESS, which typically ships
+                within 1-2 business days.
+              </li>
+            </ul>
+
+            <h4><strong>TRACKING INFO</strong></h4>
+
+            <ul>
+              <li>
+                <strong>How do I track my package?</strong>&nbsp;<br />
+                After your order has been packaged up you will receive an email
+                notification with the tracking information. You can track the
+                package by clicking on that link. If for some reason you do not
+                receive an email notification confirming shipment, you can reach
+                out to us at ibby@abdz.do
+              </li>
+            </ul>
+
+            <h4><strong>RETURN INFO</strong></h4>
+
+            <ul>
+              <li>
+                <strong>I’d like to return my item- how do I do that?</strong
+                >&nbsp;<br />
+                Apologies but we do not accept any returns for this
+                limited-edition product.
+              </li>
+            </ul>
+          </div>
+        </main>
+
+        <aside class="product">
+          <div class="">
+            <img src="images/bottle.png" />
+            <!-- <button>$60 | Buy</button> -->
+            <!-- Shopify Button -->
+            <div id='product-component-1638742195539'></div>
+<script type="text/javascript">
+/*<![CDATA[*/
+(function () {
+  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+  if (window.ShopifyBuy) {
+    if (window.ShopifyBuy.UI) {
+      ShopifyBuyInit();
+    } else {
+      loadScript();
+    }
+  } else {
+    loadScript();
+  }
+  function loadScript() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = scriptURL;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+    script.onload = ShopifyBuyInit;
+  }
+  function ShopifyBuyInit() {
+    var client = ShopifyBuy.buildClient({
+      domain: 'calmaria-terral.myshopify.com',
+      storefrontAccessToken: '56222a7c333de348a5e8e0ba36338734',
+    });
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      ui.createComponent('product', {
+        id: '7478109634804',
+        node: document.getElementById('product-component-1638742195539'),
+        moneyFormat: '%24%7B%7Bamount%7D%7D',
+        options: {
+  "product": {
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "calc(25% - 20px)",
+          "margin-left": "20px",
+          "margin-bottom": "50px"
+        }
+      },
+      "title": {
+        "font-family": "Avant Garde, sans-serif",
+        "font-weight": "normal",
+        "color": "#000000"
+      },
+      "button": {
+        "font-family": "Avant Garde, sans-serif",
+        "font-size": "16px",
+        "padding-top": "16px",
+        "padding-bottom": "16px",
+        ":hover": {
+          "background-color": "#000000"
+        },
+        "background-color": "#000000",
+        ":focus": {
+          "background-color": "#000000"
+        },
+        "border-radius": "2px",
+        "padding-left": "60px",
+        "padding-right": "60px"
+      },
+      "quantityInput": {
+        "font-size": "16px",
+        "padding-top": "16px",
+        "padding-bottom": "16px"
+      },
+      "price": {
+        "font-family": "Avant Garde, sans-serif",
+        "color": "#000000"
+      },
+      "compareAt": {
+        "font-family": "Avant Garde, sans-serif",
+        "color": "#000000"
+      },
+      "unitPrice": {
+        "font-family": "Avant Garde, sans-serif",
+        "color": "#000000"
+      }
+    },
+    "contents": {
+      "img": false,
+      "title": false,
+      "price": false
+    },
+    "text": {
+      "button": "Add to cart"
+    }
+  },
+  "productSet": {
+    "styles": {
+      "products": {
+        "@media (min-width: 601px)": {
+          "margin-left": "-20px"
+        }
+      }
+    }
+  },
+  "modalProduct": {
+    "contents": {
+      "img": false,
+      "imgWithCarousel": true,
+      "button": false,
+      "buttonWithQuantity": true
+    },
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0px",
+          "margin-bottom": "0px"
+        }
+      },
+      "button": {
+        "font-family": "Avant Garde, sans-serif",
+        "font-size": "16px",
+        "padding-top": "16px",
+        "padding-bottom": "16px",
+        ":hover": {
+          "background-color": "#000000"
+        },
+        "background-color": "#000000",
+        ":focus": {
+          "background-color": "#000000"
+        },
+        "border-radius": "2px",
+        "padding-left": "60px",
+        "padding-right": "60px"
+      },
+      "quantityInput": {
+        "font-size": "16px",
+        "padding-top": "16px",
+        "padding-bottom": "16px"
+      },
+      "title": {
+        "font-family": "Helvetica Neue, sans-serif",
+        "font-weight": "bold",
+        "font-size": "26px",
+        "color": "#4c4c4c"
+      },
+      "price": {
+        "font-family": "Helvetica Neue, sans-serif",
+        "font-weight": "normal",
+        "font-size": "18px",
+        "color": "#4c4c4c"
+      },
+      "compareAt": {
+        "font-family": "Helvetica Neue, sans-serif",
+        "font-weight": "normal",
+        "font-size": "15.299999999999999px",
+        "color": "#4c4c4c"
+      },
+      "unitPrice": {
+        "font-family": "Helvetica Neue, sans-serif",
+        "font-weight": "normal",
+        "font-size": "15.299999999999999px",
+        "color": "#4c4c4c"
+      }
+    },
+    "text": {
+      "button": "Add to cart"
+    }
+  },
+  "option": {},
+  "cart": {
+    "styles": {
+      "button": {
+        "font-family": "Avant Garde, sans-serif",
+        "font-size": "16px",
+        "padding-top": "16px",
+        "padding-bottom": "16px",
+        ":hover": {
+          "background-color": "#000000"
+        },
+        "background-color": "#000000",
+        ":focus": {
+          "background-color": "#000000"
+        },
+        "border-radius": "2px"
+      }
+    },
+    "text": {
+      "total": "Subtotal",
+      "button": "Checkout"
+    }
+  },
+  "toggle": {
+    "styles": {
+      "toggle": {
+        "font-family": "Avant Garde, sans-serif",
+        "background-color": "#000000",
+        ":hover": {
+          "background-color": "#000000"
+        },
+        ":focus": {
+          "background-color": "#000000"
+        }
+      },
+      "count": {
+        "font-size": "16px"
+      }
+    }
+  }
+},
+      });
+    });
+  }
+})();
+/*]]>*/
+</script>
+            <!-- End of Shopify Button -->
+          </div>
+        </aside>
+      </section>
     </section>
-</body>
+
+    <script type="text/javascript">
+      window.addEventListener("load", (event) => {
+        fixHeights();
+      });
+      function fixHeights() {
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        document.getElementById("cover").style.height = h + "px";
+        if(w>767){
+            document.getElementById("container").style.height = h + "px";
+        document.getElementById("details").style.height = h + "px";
+        
+        //document.getElementById("details").style.marginTop = h + "px";
+        document.getElementsByClassName("part")[0].style.minHeight = h + "px";
+        document.getElementsByClassName("part")[1].style.minHeight = h + "px";
+        document.getElementsByClassName("part")[2].style.minHeight = h + "px";
+        document.getElementsByClassName("part")[3].style.minHeight = h + "px";
+         }
+      }
+    </script>
+  </body>
 </html>
