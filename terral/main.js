@@ -22,6 +22,7 @@ var w = window.innerWidth;
         // Responsive design
         if (w > 834) {
           document.getElementById("details").style.height = h + "px";
+          document.getElementsByTagName("aside")[0].style.height = (h) + "px";
           document.getElementsByClassName("part")[0].style.minHeight = h + "px";
           document.getElementsByClassName("part")[1].style.minHeight = h + "px";
           document.getElementsByClassName("part")[2].style.minHeight = h + "px";
