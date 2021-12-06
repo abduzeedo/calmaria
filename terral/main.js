@@ -78,7 +78,6 @@ var w = window.innerWidth;
         document.getElementsByTagName("nav")[0].getElementsByTagName("h2")[0].getElementsByTagName("a")[0].onclick = function () {
             gsap.to("#container", {duration: 1, scrollTo: "#cover", ease: "ease-inOut"});
         };
-  
         document.getElementsByTagName("button")[0].getElementsByTagName("a")[0].removeAttribute("href")
         document.getElementsByTagName("button")[0].onclick = function () {
             gsap.to("#container", {duration: 1, scrollTo: "#details", ease: "ease-inOut"});
