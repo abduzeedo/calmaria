@@ -158,7 +158,7 @@ nav ul li{
 }
 
 main{
-    width: calc(50vw);
+    width: calc(40vw);
     display: block;
     padding: 0px 8vw 0px 8px;
     overflow-y: scroll;
@@ -200,24 +200,26 @@ main h2{
 }
 aside{
     display: flex;
-    width: 30vw;
+    width: 40vw;
     text-align: center;
-    padding: 48px 24px;
+    padding: 48px 24px 24px 24px;
     position: sticky;
     top: 0;
     border-left: 1px dotted #eee;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     position: absolute;
     right: 0;
     top: 0;
     bottom: 0;
+    background: url(images/hero_image_b.jpg) center top no-repeat;
+    background-size: cover;
 }
 aside img{
-    max-width: 150px;
     height: auto !important;
     margin-bottom: 48px;
+    display: none;
 }
 button{
     height: 64px;
@@ -237,6 +239,20 @@ button a{
     position: absolute;
     top:0;left:0;bottom:0;right:0;
     line-height: 64px;
+}
+* button{
+    font-family: futura-pt, sans-serif !important;
+    font-weight: bold;
+}
+.shopify-buy__btn {
+    font-family: futura-pt, sans-serif !important;
+    font-size: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: #ff0000 !important;
+    border-radius: 2px;
+    padding-left: 60px;
+    padding-right: 60px;
 }
 img.logo{
     width: 100%;
@@ -275,7 +291,7 @@ Sections
 Responsive Styles 
 */
 /* Mobile */
-@media only screen and (min-width:0px) and (max-width:768px) {
+@media only screen and (min-width:0px) and (max-width:834px) and (orientation: portrait) {
     :root{
         /* Colors */
         --h1: 32px;
@@ -391,8 +407,10 @@ Responsive Styles
         line-height: 72px;
     }
     aside{
-        padding-top: 92px;
-        padding-bottom: 0;
+        padding-bottom: 64px;
+    }
+    aside img{
+        margin-bottom: 16px;
     }
 }
 @media all and (max-height:640px) and (orientation: landscape) {

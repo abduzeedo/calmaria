@@ -20,7 +20,7 @@ var w = window.innerWidth;
           }
         mobileLinks();
         // Responsive design
-        if (w > 768) {
+        if (w > 834) {
           document.getElementById("details").style.height = h + "px";
           document.getElementsByClassName("part")[0].style.minHeight = h + "px";
           document.getElementsByClassName("part")[1].style.minHeight = h + "px";
@@ -35,6 +35,7 @@ var w = window.innerWidth;
             };
           }
         } else {
+          document.getElementsByTagName("aside")[0].style.height = h + "px";
           document.getElementById("details").style.height = h + "px";
           document.getElementsByClassName("part")[0].style.minHeight = h + "px";
           // ---------------------------------
