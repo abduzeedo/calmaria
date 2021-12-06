@@ -52,42 +52,8 @@ var w = window.innerWidth;
         parts = ["#part0","#part1","#part2","#part3","#part4"]
         target = ["#details","main"]
         gsap.to(target, {duration: 1, scrollTo: parts[i], ease: "ease-inOut"});
-    //     if(i=="a0"){
-    //         gsap.to("#details", {duration: 1, scrollTo: "#part0", ease: "ease-inOut"});
-    //     }
-    //     if(i== "a1"){
-    //         gsap.to("#details", {duration: 1, scrollTo: "#part1", ease: "ease-inOut"});
-    //     }
-    //    if(i=="a2"){
-    //         gsap.to("#details", {duration: 1, scrollTo: "#part2", ease: "ease-inOut"});
-    //     }
-    //     if(i=="a3"){
-    //         gsap.to("#details", {duration: 1, scrollTo: "#part3", ease: "ease-inOut"});
-    //     }
-    //     if(i=="a4"){
-    //         gsap.to("#details", {duration: 1, scrollTo: "#part4", ease: "ease-inOut"});
-    //     }
-        
       }
-      function animateContentDesktop(i){
-        console.log(i);
-        if(i=="a0"){
-            gsap.to("main", {duration: 1, scrollTo: "#part0", ease: "ease-inOut"});
-        }
-        if(i== "a1"){
-            gsap.to("main", {duration: 1, scrollTo: "#part1", ease: "ease-inOut"});
-        }
-       if(i=="a2"){
-            gsap.to("main", {duration: 1, scrollTo: "#part2", ease: "ease-inOut"});
-        }
-        if(i=="a3"){
-            gsap.to("main", {duration: 1, scrollTo: "#part3", ease: "ease-inOut"});
-        }
-        if(i=="a4"){
-            gsap.to("main", {duration: 1, scrollTo: "#part4", ease: "ease-inOut"});
-        }
-        
-      }
+    
       function mobileLinks() {
         // ---------------------------------
         // Open menu
@@ -109,7 +75,7 @@ var w = window.innerWidth;
         // ---------------------------------
         // Scroll Top
         // ---------------------------------
-        document.getElementsByTagName("nav")[0].getElementsByTagName("h2")[0].onclick = function () {
+        document.getElementsByTagName("nav")[0].getElementsByTagName("h2")[0].getElementsByTagName("a")[0].onclick = function () {
             gsap.to("#container", {duration: 1, scrollTo: "#cover", ease: "ease-inOut"});
         };
   
