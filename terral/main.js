@@ -35,7 +35,7 @@ var w = window.innerWidth;
             };
           }
         } else {
-          document.getElementsByTagName("aside")[0].style.height = h + "px";
+          document.getElementsByTagName("aside")[0].style.height = (h - 48) + "px";
           document.getElementById("details").style.height = h + "px";
           document.getElementsByClassName("part")[0].style.minHeight = h + "px";
           // ---------------------------------
