@@ -52,7 +52,13 @@ var w = window.innerWidth;
       function animateContent(i,v){
         parts = ["#part0","#part1","#part2","#part3","#part4"]
         target = ["#details","main"]
-        gsap.to(target, {duration: 1, scrollTo: parts[i], ease: "ease-inOut"});
+        if(i == 0 && v == 0){
+            gsap.to(target, {duration: 1, scrollTo: 0, ease: "ease-inOut"});
+        }
+        else{
+            gsap.to(target, {duration: 1, scrollTo: parts[i], ease: "ease-inOut"});
+        }
+       
       }
     
       function mobileLinks() {
