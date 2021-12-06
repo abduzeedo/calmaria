@@ -18,10 +18,11 @@
 }
 html {
     box-sizing: border-box;
-    scroll-behavior: smooth;
+    
   }
   *, *:before, *:after {
     box-sizing: inherit;
+    scroll-behavior: smooth;
   }
 body{
     font-family: var(--font-family);
@@ -127,6 +128,7 @@ section#details{
     overflow-y: hidden;
     scroll-snap-align: start;
     z-index: 100000;
+    justify-content: flex-start;
 }
 
 nav{
@@ -137,6 +139,7 @@ nav{
     top: 0;
     flex-direction: column;
     justify-content: space-between;
+    border-right: 1px dotted #eee;
     
 }
 nav h2{
@@ -155,12 +158,10 @@ nav ul li{
 }
 
 main{
-    width: 50vw;
+    width: calc(50vw);
     display: block;
     padding: 0px 24px;
     overflow-y: scroll;
-    font-size: 20px;
-    line-height: 32px;
     scroll-behavior: smooth;
 
 }
@@ -168,9 +169,6 @@ main::-webkit-scrollbar {
     display: none;
   }
 main h5{
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: normal;
     margin-bottom: 16px;
 }
 main h2{
@@ -188,8 +186,7 @@ main h2{
     justify-content: space-between;
 }
 .part1 .intro{
-    font-size: 32px;
-    line-height: 42px;
+
 }
 
 .part1 .bottom h5{
@@ -200,9 +197,7 @@ main h2{
     margin-bottom: 0;
 }
 .part4{
-    font-size: 16px;
-    line-height: 24px;
-    
+
 }
 aside{
     display: flex;
@@ -215,6 +210,10 @@ aside{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
 aside img{
     max-width: 150px;
@@ -233,7 +232,12 @@ button{
     border: none;
     border-radius: 4px;
     background: #5d656e91;
-
+    position: relative;
+}
+button a{
+    position: absolute;
+    top:0;left:0;bottom:0;right:0;
+    line-height: 64px;
 }
 img.logo{
     width: 100%;
@@ -257,6 +261,12 @@ img.stamp{
     left: 0;
     z-index: 1;
   }
+  .mobile{
+      display: none;
+  }
+  .desktop{
+    display: block;
+}
 
 /* 
 Sections
@@ -279,35 +289,106 @@ Responsive Styles
         --base-margin: 16px;
         --base-margin_2: 32px;
     }
+    .mobile{
+        display: block;
+    }
+    .desktop{
+        display: none;
+    }
     img.stamp{
         top: 5vh;
         height: auto;
     }
     section#container{
-        height: auto !important;
         z-index: 100000;
     }
     section#details{
         display: block;
+        overflow-y: scroll;
     }
     section#details main{
         float: left;
         width: 100%;
     }
-    .part1 .intro {
-        font-size: 20px;
-    line-height: 32px;
+    .part{
+       padding-top: 128px;
     }
-    section#details main .part{
-        min-height: auto !important;
+    .part1{
+        display: block;
+        padding-top: 100px;
     }
-    section#details nav{
+    .part1 .bottom{
+        margin-top: 72px;
+    }
+    section#details nav #main_menu{
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        bottom: 0;
+        left:0;
+        background: rgba(255,255,255,.1);
+        backdrop-filter: blur(72px);
+        z-index: 100000;
+        text-align: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         display: none;
+        z-index: 1000000000000;
+      
+    }
+    section#details nav #main_menu .close{
+        position: fixed;
+        top: 24px;
+        right: 24px;
+    }
+    section#details nav .open_menu{
+        position: absolute;
+        top: 0px;
+        right: 24px;
+    }
+    section#details nav #main_menu .copyright{
+        position: fixed;
+        bottom: 24px;
+        font-size: 12px;
+        line-height: 18px;
+        text-align: center;
+        width: 100%;
+    }
+    section#details nav ul li{
+        font-size: 32px;
+        line-height: 56px;
     }
     section#details aside{
         width: 100%;
         float: right;
         clear: both;
+        position: relative;
+        border-left: none;
+    }
+    nav{
+        width: 100%;
+        height: 72px;
+        line-height: 72px;
+        padding: 0 24px !important;
+        border-right: none;
+        z-index: 10;
+        position: sticky;
+        left: 0;
+        right: 0;
+        top: 0;
+        border-bottom: 1px solid #ccc;
+        background: rgba(255, 255, 255, 0.9);
+    }
+    nav h2{
+        height: 72px;
+        line-height: 72px;
+    }
+    aside{
+        padding-top: 92px;
+        padding-bottom: 0;
     }
 }
 @media all and (max-height:640px) and (orientation: landscape) {

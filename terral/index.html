@@ -31,7 +31,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
-    <!-- The video -->
+    <!-- ###################################
+        Video
+        ################################### -->
     <video
       autoplay
       muted
@@ -43,22 +45,269 @@
     </video>
 
     <section id="container">
+      <!-- ###################################
+        Cover page
+        ################################### -->
       <section id="cover">
         <h2><a href="http://calmaria.app">Calmaria</a></h2>
         <img src="images/terral_logo.svg" class="logo" />
         <img src="images/stamp.svg" class="stamp" />
         <button><a href="#details">Shop Now</a></button>
       </section>
+      <!-- ###################################
+       Details Page
+        ################################### -->
       <section id="details">
+        <!-- ###################################
+        Navigation
+        ################################### -->
         <nav>
           <h2><a href="#cover">Terral</a></h2>
-          <ul>
-            <li><a href="#part1">The parfum</a></li>
-            <li><a href="#part2">Ingredients</a></li>
-            <li><a href="#part3">Our story</a></li>
-            <li><a href="#part4">FAQ</a></li>
-          </ul>
+          <a class="open_menu mobile">Menu</a>
+          <div id="main_menu">
+            <a class="close">Close</a>
+            <ul>
+              <li class="menu1 desktop"><a href="#part1">About</a></li>
+              <li class="menu1 mobile"><a href="#buynow">About</a></li>
+              <li><a href="#part2">Ingredients</a></li>
+              <li><a href="#part3">Our story</a></li>
+              <li><a href="#part4">FAQ</a></li>
+            </ul>
+            <div class="copyright">
+                Hand blended in California by L'Aromatica and distributed by Steale LLC, Oakland, CA
+            </div>
+          </div>
         </nav>
+        <!-- ###################################
+        Product 
+        ################################### -->
+        <aside id="buynow" class="product">
+          <div >
+            <img  src="images/bottle.png" />
+            <!-- <button>$60 | Buy</button> -->
+            <!-- Shopify Button -->
+            <div id="product-component-1638742195539"></div>
+            <script type="text/javascript">
+              /*<![CDATA[*/
+              (function () {
+                var scriptURL =
+                  "https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js";
+                if (window.ShopifyBuy) {
+                  if (window.ShopifyBuy.UI) {
+                    ShopifyBuyInit();
+                  } else {
+                    loadScript();
+                  }
+                } else {
+                  loadScript();
+                }
+                function loadScript() {
+                  var script = document.createElement("script");
+                  script.async = true;
+                  script.src = scriptURL;
+                  (
+                    document.getElementsByTagName("head")[0] ||
+                    document.getElementsByTagName("body")[0]
+                  ).appendChild(script);
+                  script.onload = ShopifyBuyInit;
+                }
+                function ShopifyBuyInit() {
+                  var client = ShopifyBuy.buildClient({
+                    domain: "calmaria-terral.myshopify.com",
+                    storefrontAccessToken: "56222a7c333de348a5e8e0ba36338734",
+                  });
+                  ShopifyBuy.UI.onReady(client).then(function (ui) {
+                    ui.createComponent("product", {
+                      id: "7478109634804",
+                      node: document.getElementById(
+                        "product-component-1638742195539"
+                      ),
+                      moneyFormat: "%24%7B%7Bamount%7D%7D",
+                      options: {
+                        product: {
+                          styles: {
+                            product: {
+                              "@media (min-width: 601px)": {
+                                "max-width": "calc(25% - 20px)",
+                                "margin-left": "20px",
+                                "margin-bottom": "50px",
+                              },
+                            },
+                            title: {
+                              "font-family": "Avant Garde, sans-serif",
+                              "font-weight": "normal",
+                              color: "#000000",
+                            },
+                            button: {
+                              "font-family": "Avant Garde, sans-serif",
+                              "font-size": "16px",
+                              "padding-top": "16px",
+                              "padding-bottom": "16px",
+                              ":hover": {
+                                "background-color": "#000000",
+                              },
+                              "background-color": "#000000",
+                              ":focus": {
+                                "background-color": "#000000",
+                              },
+                              "border-radius": "2px",
+                              "padding-left": "60px",
+                              "padding-right": "60px",
+                            },
+                            quantityInput: {
+                              "font-size": "16px",
+                              "padding-top": "16px",
+                              "padding-bottom": "16px",
+                            },
+                            price: {
+                              "font-family": "Avant Garde, sans-serif",
+                              color: "#000000",
+                            },
+                            compareAt: {
+                              "font-family": "Avant Garde, sans-serif",
+                              color: "#000000",
+                            },
+                            unitPrice: {
+                              "font-family": "Avant Garde, sans-serif",
+                              color: "#000000",
+                            },
+                          },
+                          contents: {
+                            img: false,
+                            title: false,
+                            price: false,
+                          },
+                          text: {
+                            button: "Add to cart",
+                          },
+                        },
+                        productSet: {
+                          styles: {
+                            products: {
+                              "@media (min-width: 601px)": {
+                                "margin-left": "-20px",
+                              },
+                            },
+                          },
+                        },
+                        modalProduct: {
+                          contents: {
+                            img: false,
+                            imgWithCarousel: true,
+                            button: false,
+                            buttonWithQuantity: true,
+                          },
+                          styles: {
+                            product: {
+                              "@media (min-width: 601px)": {
+                                "max-width": "100%",
+                                "margin-left": "0px",
+                                "margin-bottom": "0px",
+                              },
+                            },
+                            button: {
+                              "font-family": "Avant Garde, sans-serif",
+                              "font-size": "16px",
+                              "padding-top": "16px",
+                              "padding-bottom": "16px",
+                              ":hover": {
+                                "background-color": "#000000",
+                              },
+                              "background-color": "#000000",
+                              ":focus": {
+                                "background-color": "#000000",
+                              },
+                              "border-radius": "2px",
+                              "padding-left": "60px",
+                              "padding-right": "60px",
+                            },
+                            quantityInput: {
+                              "font-size": "16px",
+                              "padding-top": "16px",
+                              "padding-bottom": "16px",
+                            },
+                            title: {
+                              "font-family": "Helvetica Neue, sans-serif",
+                              "font-weight": "bold",
+                              "font-size": "26px",
+                              color: "#4c4c4c",
+                            },
+                            price: {
+                              "font-family": "Helvetica Neue, sans-serif",
+                              "font-weight": "normal",
+                              "font-size": "18px",
+                              color: "#4c4c4c",
+                            },
+                            compareAt: {
+                              "font-family": "Helvetica Neue, sans-serif",
+                              "font-weight": "normal",
+                              "font-size": "15.299999999999999px",
+                              color: "#4c4c4c",
+                            },
+                            unitPrice: {
+                              "font-family": "Helvetica Neue, sans-serif",
+                              "font-weight": "normal",
+                              "font-size": "15.299999999999999px",
+                              color: "#4c4c4c",
+                            },
+                          },
+                          text: {
+                            button: "Add to cart",
+                          },
+                        },
+                        option: {},
+                        cart: {
+                          styles: {
+                            button: {
+                              "font-family": "Avant Garde, sans-serif",
+                              "font-size": "16px",
+                              "padding-top": "16px",
+                              "padding-bottom": "16px",
+                              ":hover": {
+                                "background-color": "#000000",
+                              },
+                              "background-color": "#000000",
+                              ":focus": {
+                                "background-color": "#000000",
+                              },
+                              "border-radius": "2px",
+                            },
+                          },
+                          text: {
+                            total: "Subtotal",
+                            button: "Checkout",
+                          },
+                        },
+                        toggle: {
+                          styles: {
+                            toggle: {
+                              "font-family": "Avant Garde, sans-serif",
+                              "background-color": "#000000",
+                              ":hover": {
+                                "background-color": "#000000",
+                              },
+                              ":focus": {
+                                "background-color": "#000000",
+                              },
+                            },
+                            count: {
+                              "font-size": "16px",
+                            },
+                          },
+                        },
+                      },
+                    });
+                  });
+                }
+              })();
+              /*]]>*/
+            </script>
+            <!-- End of Shopify Button -->
+          </div>
+        </aside>
+        <!-- ###################################
+        Main content 
+        ################################### -->
         <main>
           <div id="part1" class="part1 part">
             <div class="intro">
@@ -85,19 +334,7 @@
 
           <div id="part2" class="part2 part">
             <h3>Ingredients</h3>
-            <p>Triethyl Citrate Essential oil blend including: </p>
-            <ul>
-                <li>Citrus paradisi (Pink Grapefruit),</li>
-                <li>Thujopsis Dolabrata (Hiba Cedarwood),</li>
-                <li>Piper Nigrum (Black Pepper),</li>
-                <li>Santalum spicatum (Sandalwood),</li>
-                <li>Chamaecyparis obtusa (Hinoki),</li>
-                <li>Vetiveria zizanioides (Haitian Vetiver),</li>
-                <li>Lavandula angustifolia (Lavender),</li>
-                <li>Rosa x damascena (Damask Rose),</li>
-                <li>Fragrance.</li>
-            </ul>            
-            <p class="secondary">
+            <p>
               Some friendly cautions: Terral parfum contains essential oils.
               Please conduct a patch test before using. Discontinue use if
               irritation occurs and seek the advice of a healthcare
@@ -105,6 +342,14 @@
               healthcare practitioner before wearing fragrances which contain
               essential oils. Paraben, sulfate and phthalate free. 100% Vegan
               and Cruelty-free.
+            </p>
+            <p>
+              Triethyl Citrate Essential oil blend including:<br />
+              Citrus paradisi (Pink Grapefruit), Thujopsis Dolabrata (Hiba
+              Cedarwood), Piper Nigrum (Black Pepper), Santalum spicatum
+              (Sandalwood), Chamaecyparis obtusa (Hinoki), Vetiveria zizanioides
+              (Haitian Vetiver), Lavandula angustifolia (Lavender), Rosa x
+              damascena (Damask Rose), Fragrance.
             </p>
           </div>
 
@@ -240,246 +485,44 @@
             </ul>
           </div>
         </main>
-
-        <aside class="product">
-          <div class="">
-            <img src="images/bottle.png" />
-            <!-- <button>$60 | Buy</button> -->
-            <!-- Shopify Button -->
-            <div id='product-component-1638742195539'></div>
-<script type="text/javascript">
-/*<![CDATA[*/
-(function () {
-  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-  if (window.ShopifyBuy) {
-    if (window.ShopifyBuy.UI) {
-      ShopifyBuyInit();
-    } else {
-      loadScript();
-    }
-  } else {
-    loadScript();
-  }
-  function loadScript() {
-    var script = document.createElement('script');
-    script.async = true;
-    script.src = scriptURL;
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
-    script.onload = ShopifyBuyInit;
-  }
-  function ShopifyBuyInit() {
-    var client = ShopifyBuy.buildClient({
-      domain: 'calmaria-terral.myshopify.com',
-      storefrontAccessToken: '56222a7c333de348a5e8e0ba36338734',
-    });
-    ShopifyBuy.UI.onReady(client).then(function (ui) {
-      ui.createComponent('product', {
-        id: '7478109634804',
-        node: document.getElementById('product-component-1638742195539'),
-        moneyFormat: '%24%7B%7Bamount%7D%7D',
-        options: {
-  "product": {
-    "styles": {
-      "product": {
-        "@media (min-width: 601px)": {
-          "max-width": "calc(25% - 20px)",
-          "margin-left": "20px",
-          "margin-bottom": "50px"
-        }
-      },
-      "title": {
-        "font-family": "Avant Garde, sans-serif",
-        "font-weight": "normal",
-        "color": "#000000"
-      },
-      "button": {
-        "font-family": "Avant Garde, sans-serif",
-        "font-size": "16px",
-        "padding-top": "16px",
-        "padding-bottom": "16px",
-        ":hover": {
-          "background-color": "#000000"
-        },
-        "background-color": "#000000",
-        ":focus": {
-          "background-color": "#000000"
-        },
-        "border-radius": "2px",
-        "padding-left": "60px",
-        "padding-right": "60px"
-      },
-      "quantityInput": {
-        "font-size": "16px",
-        "padding-top": "16px",
-        "padding-bottom": "16px"
-      },
-      "price": {
-        "font-family": "Avant Garde, sans-serif",
-        "color": "#000000"
-      },
-      "compareAt": {
-        "font-family": "Avant Garde, sans-serif",
-        "color": "#000000"
-      },
-      "unitPrice": {
-        "font-family": "Avant Garde, sans-serif",
-        "color": "#000000"
-      }
-    },
-    "contents": {
-      "img": false,
-      "title": false,
-      "price": false
-    },
-    "text": {
-      "button": "Add to cart"
-    }
-  },
-  "productSet": {
-    "styles": {
-      "products": {
-        "@media (min-width: 601px)": {
-          "margin-left": "-20px"
-        }
-      }
-    }
-  },
-  "modalProduct": {
-    "contents": {
-      "img": false,
-      "imgWithCarousel": true,
-      "button": false,
-      "buttonWithQuantity": true
-    },
-    "styles": {
-      "product": {
-        "@media (min-width: 601px)": {
-          "max-width": "100%",
-          "margin-left": "0px",
-          "margin-bottom": "0px"
-        }
-      },
-      "button": {
-        "font-family": "Avant Garde, sans-serif",
-        "font-size": "16px",
-        "padding-top": "16px",
-        "padding-bottom": "16px",
-        ":hover": {
-          "background-color": "#000000"
-        },
-        "background-color": "#000000",
-        ":focus": {
-          "background-color": "#000000"
-        },
-        "border-radius": "2px",
-        "padding-left": "60px",
-        "padding-right": "60px"
-      },
-      "quantityInput": {
-        "font-size": "16px",
-        "padding-top": "16px",
-        "padding-bottom": "16px"
-      },
-      "title": {
-        "font-family": "Helvetica Neue, sans-serif",
-        "font-weight": "bold",
-        "font-size": "26px",
-        "color": "#4c4c4c"
-      },
-      "price": {
-        "font-family": "Helvetica Neue, sans-serif",
-        "font-weight": "normal",
-        "font-size": "18px",
-        "color": "#4c4c4c"
-      },
-      "compareAt": {
-        "font-family": "Helvetica Neue, sans-serif",
-        "font-weight": "normal",
-        "font-size": "15.299999999999999px",
-        "color": "#4c4c4c"
-      },
-      "unitPrice": {
-        "font-family": "Helvetica Neue, sans-serif",
-        "font-weight": "normal",
-        "font-size": "15.299999999999999px",
-        "color": "#4c4c4c"
-      }
-    },
-    "text": {
-      "button": "Add to cart"
-    }
-  },
-  "option": {},
-  "cart": {
-    "styles": {
-      "button": {
-        "font-family": "Avant Garde, sans-serif",
-        "font-size": "16px",
-        "padding-top": "16px",
-        "padding-bottom": "16px",
-        ":hover": {
-          "background-color": "#000000"
-        },
-        "background-color": "#000000",
-        ":focus": {
-          "background-color": "#000000"
-        },
-        "border-radius": "2px"
-      }
-    },
-    "text": {
-      "total": "Subtotal",
-      "button": "Checkout"
-    }
-  },
-  "toggle": {
-    "styles": {
-      "toggle": {
-        "font-family": "Avant Garde, sans-serif",
-        "background-color": "#000000",
-        ":hover": {
-          "background-color": "#000000"
-        },
-        ":focus": {
-          "background-color": "#000000"
-        }
-      },
-      "count": {
-        "font-size": "16px"
-      }
-    }
-  }
-},
-      });
-    });
-  }
-})();
-/*]]>*/
-</script>
-            <!-- End of Shopify Button -->
-          </div>
-        </aside>
       </section>
     </section>
-
     <script type="text/javascript">
+      var w = window.innerWidth;
+      var h = window.innerHeight;
       window.addEventListener("load", (event) => {
         fixHeights();
       });
+      window.addEventListener("resize", (event) => {
+        fixHeights();
+      });
       function fixHeights() {
-        var w = window.innerWidth;
-        var h = window.innerHeight;
+        w = window.innerWidth;
+        h = window.innerHeight;
+        menu = document.getElementById("main_menu");
+
         document.getElementById("cover").style.height = h + "px";
-        if(w>767){
-            document.getElementById("container").style.height = h + "px";
-        document.getElementById("details").style.height = h + "px";
-        
-        //document.getElementById("details").style.marginTop = h + "px";
-        document.getElementsByClassName("part")[0].style.minHeight = h + "px";
-        document.getElementsByClassName("part")[1].style.minHeight = h + "px";
-        document.getElementsByClassName("part")[2].style.minHeight = h + "px";
-        document.getElementsByClassName("part")[3].style.minHeight = h + "px";
-         }
+        document.getElementById("container").style.height = h + "px";
+        if (w > 767) {
+          document.getElementById("details").style.height = h + "px";
+          //document.getElementById("details").style.marginTop = h + "px";
+          document.getElementsByClassName("part")[0].style.minHeight = h + "px";
+          document.getElementsByClassName("part")[1].style.minHeight = h + "px";
+          document.getElementsByClassName("part")[2].style.minHeight = h + "px";
+          document.getElementsByClassName("part")[3].style.minHeight = h + "px";
+        } else {
+            document.getElementById("details").style.height = h + "px";
+          document.getElementsByClassName("part")[0].style.minHeight = h + "px";
+          for (i = 0; i < menu.getElementsByTagName("li").length; i++) {
+            menu.getElementsByTagName("li")[i].onclick = function () {
+              menu.style.display = "none";
+            };
+          }
+          document.getElementsByClassName("open_menu")[0].onclick = function () {
+              menu.style.display = "flex";
+          };
+        }
+        console.log(menu.getElementsByTagName("li").length);
       }
     </script>
   </body>
