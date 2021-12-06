@@ -74,7 +74,8 @@
               <li><a href="#part4">FAQ</a></li>
             </ul>
             <div class="copyright mobile">
-                Hand blended in California by L'Aromatica and distributed by Steale LLC, Oakland, CA
+              Hand blended in California by L'Aromatica.<br />
+              Distributed by Steale LLC, Oakland, CA
             </div>
           </div>
         </nav>
@@ -82,8 +83,8 @@
         Product 
         ################################### -->
         <aside id="buynow" class="product">
-          <div >
-            <img  src="images/bottle.png" />
+          <div>
+            <img src="images/bottle.png" />
             <!-- <button>$60 | Buy</button> -->
             <!-- Shopify Button -->
             <div id="product-component-1638742195539"></div>
@@ -511,16 +512,18 @@
           document.getElementsByClassName("part")[2].style.minHeight = h + "px";
           document.getElementsByClassName("part")[3].style.minHeight = h + "px";
         } else {
-            document.getElementById("details").style.height = h + "px";
+          document.getElementById("details").style.height = h + "px";
           document.getElementsByClassName("part")[0].style.minHeight = h + "px";
           for (i = 0; i < menu.getElementsByTagName("li").length; i++) {
             menu.getElementsByTagName("li")[i].onclick = function () {
               menu.style.display = "none";
             };
           }
-          document.getElementsByClassName("open_menu")[0].onclick = function () {
+          document.getElementsByClassName("open_menu")[0].onclick =
+            function () {
               menu.style.display = "flex";
-          };
+              gsap.fromTo("nav li, .close, .copyright", {opacity: 0,y:33}, {opacity: 1, y: 0, duration: 2,stagger: 0.1, ease: "elastic"});
+            };
         }
         console.log(menu.getElementsByTagName("li").length);
       }

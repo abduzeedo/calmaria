@@ -311,7 +311,7 @@ Responsive Styles
         width: 100%;
     }
     .part{
-       padding-top: 128px;
+       padding-top: 92px;
     }
     .part1{
         display: block;
@@ -341,7 +341,7 @@ Responsive Styles
     }
     section#details nav #main_menu .close{
         position: fixed;
-        top: 24px;
+        top: 0px;
         right: 24px;
     }
     section#details nav .open_menu{
@@ -356,6 +356,7 @@ Responsive Styles
         line-height: 18px;
         text-align: center;
         width: 100%;
+        padding: 0 10vw;
     }
     section#details nav ul li{
         font-size: 32px;
