@@ -67,8 +67,8 @@
           <div id="main_menu">
             <a class="close mobile">Close</a>
             <ul>
-              <li class="menu1 desktop"><a href="#part1">About</a></li>
-              <li class="menu1 mobile"><a href="#buynow">About</a></li>
+              <li class="menu1 mobile"><a href="#buynow">Parfun</a></li>
+              <li class="menu1"><a href="#part1">About</a></li>
               <li><a href="#part2">Ingredients</a></li>
               <li><a href="#part3">Our story</a></li>
               <li><a href="#part4">FAQ</a></li>
@@ -522,7 +522,16 @@
           document.getElementsByClassName("open_menu")[0].onclick =
             function () {
               menu.style.display = "flex";
-              gsap.fromTo("nav li, .close, .copyright", {opacity: 0,y:33}, {opacity: 1, y: 0, duration: 2,stagger: 0.1, ease: "elastic"});
+              gsap.fromTo(
+                "nav li, .close, .copyright",
+                { opacity: 0, y: 33 },
+                { opacity: 1, y: 0, duration: 2, stagger: 0.1, ease: "elastic" }
+              );
+            };
+
+            document.getElementsByClassName("close")[0].onclick =
+            function () {
+              menu.style.display = "none";
             };
         }
         console.log(menu.getElementsByTagName("li").length);
