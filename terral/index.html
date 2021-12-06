@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="../reset.css" />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollToPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/EaselPlugin.min.js"></script>
     <title>Terral — Parfum</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
@@ -62,12 +64,12 @@
         Navigation
         ################################### -->
         <nav>
-          <h2><a href="#cover">Terral</a></h2>
+          <h2><a>Terral</a></h2>
           <a class="open_menu mobile">Menu</a>
           <div id="main_menu">
             <a class="close mobile">Close</a>
             <ul>
-              <li class="menu1 mobile"><a href="#buynow">Parfun</a></li>
+              <li class="menu1 mobile"><a href="#part0">Parfun</a></li>
               <li class="menu1"><a href="#part1">About</a></li>
               <li><a href="#part2">Ingredients</a></li>
               <li><a href="#part3">Our story</a></li>
@@ -82,7 +84,7 @@
         <!-- ###################################
         Product 
         ################################### -->
-        <aside id="buynow" class="product">
+        <aside id="part0" class="product">
           <div>
             <img src="images/bottle.png" />
             <!-- <button>$60 | Buy</button> -->
@@ -309,7 +311,7 @@
         <!-- ###################################
         Main content 
         ################################### -->
-        <main>
+        <main id="main">
           <div id="part1" class="part1 part">
             <div class="intro">
               <p>
@@ -488,54 +490,6 @@
         </main>
       </section>
     </section>
-    <script type="text/javascript">
-      var w = window.innerWidth;
-      var h = window.innerHeight;
-      window.addEventListener("load", (event) => {
-        fixHeights();
-      });
-      window.addEventListener("resize", (event) => {
-        fixHeights();
-      });
-      function fixHeights() {
-        w = window.innerWidth;
-        h = window.innerHeight;
-        menu = document.getElementById("main_menu");
-
-        document.getElementById("cover").style.height = h + "px";
-        document.getElementById("container").style.height = h + "px";
-        if (w > 767) {
-          document.getElementById("details").style.height = h + "px";
-          //document.getElementById("details").style.marginTop = h + "px";
-          document.getElementsByClassName("part")[0].style.minHeight = h + "px";
-          document.getElementsByClassName("part")[1].style.minHeight = h + "px";
-          document.getElementsByClassName("part")[2].style.minHeight = h + "px";
-          document.getElementsByClassName("part")[3].style.minHeight = h + "px";
-        } else {
-          document.getElementById("details").style.height = h + "px";
-          document.getElementsByClassName("part")[0].style.minHeight = h + "px";
-          for (i = 0; i < menu.getElementsByTagName("li").length; i++) {
-            menu.getElementsByTagName("li")[i].onclick = function () {
-              menu.style.display = "none";
-            };
-          }
-          document.getElementsByClassName("open_menu")[0].onclick =
-            function () {
-              menu.style.display = "flex";
-              gsap.fromTo(
-                "nav li, .close, .copyright",
-                { opacity: 0, y: 33 },
-                { opacity: 1, y: 0, duration: 2, stagger: 0.1, ease: "elastic" }
-              );
-            };
-
-            document.getElementsByClassName("close")[0].onclick =
-            function () {
-              menu.style.display = "none";
-            };
-        }
-        console.log(menu.getElementsByTagName("li").length);
-      }
-    </script>
+    <script src="main.js" text/javascript"></script>
   </body>
 </html>

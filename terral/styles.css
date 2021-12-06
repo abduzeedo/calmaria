@@ -22,7 +22,7 @@ html {
   }
   *, *:before, *:after {
     box-sizing: inherit;
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
   }
 body{
     font-family: var(--font-family);
@@ -94,12 +94,12 @@ li{
     margin-bottom: 8px;
 }
 section#container{
- scroll-snap-type: mandatory;
+  scroll-snap-type: mandatory;
   scroll-snap-points-y: repeat(300px);
   scroll-snap-type: y mandatory;
   height: 90vh;
   overflow: scroll;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 section#cover{
     position: relative;
@@ -139,13 +139,12 @@ nav{
     top: 0;
     flex-direction: column;
     justify-content: space-between;
-    border-right: 1px dotted #eee;
-    
 }
 nav h2{
     text-transform: uppercase;
     letter-spacing: .2em;
     font-weight: 500;
+    cursor: pointer;
 }
 nav ul{
     font-size:var(--h5);
@@ -155,15 +154,14 @@ nav ul{
 nav ul li{
     min-height: 32px;
     margin: 0;
+    cursor: pointer;
 }
 
 main{
     width: calc(50vw);
     display: block;
-    padding: 0px 24px;
+    padding: 0px 8vw 0px 8px;
     overflow-y: scroll;
-    scroll-behavior: smooth;
-
 }
 main::-webkit-scrollbar {
     display: none;
@@ -186,7 +184,8 @@ main h2{
     justify-content: space-between;
 }
 .part1 .intro{
-
+    font-size: 20px;
+    line-height: 30px;
 }
 
 .part1 .bottom h5{
@@ -276,7 +275,7 @@ Sections
 Responsive Styles 
 */
 /* Mobile */
-@media only screen and (min-width:0px) and (max-width:767px) {
+@media only screen and (min-width:0px) and (max-width:768px) {
     :root{
         /* Colors */
         --h1: 32px;
@@ -309,6 +308,8 @@ Responsive Styles
     section#details main{
         float: left;
         width: 100%;
+        overflow-y: none;
+        padding: 0 24px
     }
     .part{
        padding-top: 92px;
