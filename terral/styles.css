@@ -94,7 +94,7 @@ li{
     margin-bottom: 8px;
 }
 section{
-    min-height: 95vh;
+    min-height: 90vh;
 }
 section#container{
   scroll-snap-type: mandatory;
