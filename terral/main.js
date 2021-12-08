@@ -2,6 +2,18 @@ var w = window.innerWidth;
       var h = window.innerHeight;
       window.addEventListener("load", (event) => {
         fixHeights();
+        // Animation for the intro
+        gsap.fromTo(
+          "#cover h2, #cover .logo, #cover button, .stamp",
+          { opacity: 0, y: 33 },
+          { opacity: 1, y: 0, duration: 4,delay:0.2, stagger: 0.2, ease: "elastic",onComplete: function(){
+            
+          } }
+        );
+        // Timeout for the snap
+        setTimeout(function(){ 
+          document.getElementById("container").classList.add("snap")
+        }, 200);
       });
       window.addEventListener("resize", (event) => {
         fixHeights();

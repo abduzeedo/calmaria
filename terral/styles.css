@@ -93,16 +93,13 @@ li{
     margin-left: 16px;
     margin-bottom: 8px;
 }
-section{
-    min-height: 90vh;
-}
 section#container{
-  scroll-snap-type: mandatory;
-  scroll-snap-points-y: repeat(300px);
-  scroll-snap-type: y mandatory;
-  
   overflow: scroll;
   /* scroll-behavior: smooth; */
+}
+.snap{
+    scroll-snap-points-y: repeat(300px);
+    scroll-snap-type: y mandatory;
 }
 section#cover{
     position: relative;
@@ -118,6 +115,7 @@ section#cover{
     padding:48px;
     scroll-snap-align: start;
     z-index: 1000;
+    height: 100vh;
     
 }
 section#details{
