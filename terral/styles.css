@@ -73,7 +73,7 @@ a{
     color: var(--background);
 }
 p{
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 img{
 }
@@ -202,8 +202,8 @@ main h2{
 .part1 p:last-child{
     margin-bottom: 0;
 }
-.part4{
-
+.part4 li{
+    margin-bottom: 16px;
 }
 aside{
     display: flex;
