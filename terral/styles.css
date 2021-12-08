@@ -118,6 +118,12 @@ section#cover{
     height: 100vh;
     
 }
+#cover h2, 
+#cover .logo, 
+#cover button, 
+#cover .stamp{
+    opacity: 0;
+}
 section#details{
     color: #000000;
     position: sticky; 
