@@ -93,11 +93,14 @@ li{
     margin-left: 16px;
     margin-bottom: 8px;
 }
+section{
+    min-height: 95vh;
+}
 section#container{
   scroll-snap-type: mandatory;
   scroll-snap-points-y: repeat(300px);
   scroll-snap-type: y mandatory;
-  height: 90vh;
+  
   overflow: scroll;
   /* scroll-behavior: smooth; */
 }
