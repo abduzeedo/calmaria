@@ -11,6 +11,9 @@
 
     gtag('config', 'UA-167564527-1');
     </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollToPlugin.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/EaselPlugin.min.js"></script>
     <link rel="stylesheet" href="https://use.typekit.net/sbl7ghc.css" />
     <link rel="stylesheet" href="../reset.css">
     <link rel="stylesheet" href="../styles.css">
@@ -33,11 +36,30 @@
       </video>
       <section id="cover">
         <h3 style="font-weight: normal;text-transform: uppercase;">Thank you so much for getting TERRAL!</h3>
-        
-        <div>
-            <h2><a href="http://calmaria.app">Download Calmaria.app</a></h2>
-        </div>
+        <h2><a href="http://calmaria.app">Download Calmaria.app</a></h2>
+        <h3 style="font-weight: normal;text-transform: uppercase;"><a href="../">Back to the site</a></h3>
       </section>
-      <script src="../main.js" text/javascript"></script>
+      </body>
+      <script>
+          var w = window.innerWidth;
+          var h = window.innerHeight;
+          window.addEventListener("load", (event) => {
+            document.getElementById("cover").style.height = h + "px";
+            // Animation for the intro
+            gsap.fromTo(
+                "#cover h3, #cover h2",
+                { opacity: 0, y: 33 },
+                {
+                opacity: 1,
+                y: 0,
+                duration: 4,
+                delay: 0.2,
+                stagger: 0.2,
+                ease: "elastic",
+                onComplete: function () {},
+                }
+            );
+        });
+      </script>
 </body>
 </html>
