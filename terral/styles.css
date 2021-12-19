@@ -289,6 +289,28 @@ img.stamp{
   .desktop{
     display: block;
 }
+.banner{
+    background-color: #ffd900;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 32px;
+    z-index: 1000000;
+    text-align: center;
+    line-height: 32px;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 500;
+}
+.soldout_message{
+    background: rgba(255,255,255,.5);
+    padding: 2px 6px;
+    display: inline;
+    border-radius: 8px;
+    backdrop-filter: blur(24px);
+    text-transform: uppercase;
+}
 
 /* 
 Sections
@@ -416,6 +438,9 @@ Responsive Styles
         border-bottom: 1px solid #ccc;
         background: rgba(255, 255, 255, 0.9);
         z-index: 100000000000000;
+    }
+    .soldout nav{
+        top: 32px
     }
     nav h2{
         height: 72px;
