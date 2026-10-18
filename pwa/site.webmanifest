@@ -1,7 +1,7 @@
 {
   "name": "Calmaria",
   "short_name": "Calmaria",
-  "description": "A quiet breathing app. One tap, one shape, one slow breath.",
+  "description": "a quiet place to breathe.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

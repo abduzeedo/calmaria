@@ -445,6 +445,21 @@ body {
     gap: 20px;
 }
 
+.atlas-claim {
+    margin-top: 56px;
+    max-width: 880px;
+}
+
+.atlas-footnote {
+    margin: 14px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ds-t-secondary);
+}
+
+.atlas-claim sup { font-size: 0.6em; line-height: 0; vertical-align: super; margin-left: 1px; }
+.atlas-claim sup a { color: inherit; text-decoration: none; }
+
 .atlas-grid-3 {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
