@@ -850,3 +850,12 @@ html[data-theme="dark"] .watch-item img {
     background: var(--ds-t-card-hover);
     color: var(--ds-t-super);
 }
+
+
+/* Header button: a short label on small screens */
+.cta-short { display: none; }
+
+@media (max-width: 640px) {
+    .cta-long { display: none; }
+    .cta-short { display: inline; }
+}
