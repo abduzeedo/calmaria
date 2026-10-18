@@ -1,7 +1,7 @@
 {
   "name": "Calmaria",
   "short_name": "Calmaria",
-  "description": "a quiet place to breathe.",
+  "description": "A quiet place to breathe.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

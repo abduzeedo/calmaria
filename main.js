@@ -6,16 +6,16 @@
 
     const THEME_DATA = {
         dots: {
-            name: "dots.",
-            desc: "a calm grid of dots. it swells into a sphere as you breathe in, glimmers as you hold, and settles flat as you let go.",
+            name: "Dots.",
+            desc: "A calm grid of dots. It swells into a sphere as you breathe in, glimmers as you hold, and settles flat as you let go.",
             iosVideo: "videos/ios_dots.mp4",
             iosPoster: "images/poster_ios_dots.png",
             androidVideo: "videos/android_dots.mp4",
             androidPoster: "images/poster_android_dots.png"
         },
         glass: {
-            name: "glass.",
-            desc: "a warm sun over frosted glass. it rises as you breathe in and melts into the blur as you let go.",
+            name: "Glass.",
+            desc: "A warm sun over frosted glass. It rises as you breathe in and melts into the blur as you let go.",
             iosVideo: "videos/ios_glass.mp4",
             iosPoster: "images/poster_ios_glass.png",
             androidVideo: "videos/android_glass.mp4",
@@ -23,23 +23,23 @@
         },
         "80s": {
             name: "80s.",
-            desc: "where calmaria began. a setting sun, cut by horizon lines. it grows as you breathe in and shrinks as you breathe out.",
+            desc: "Where Calmaria began. A setting sun, cut by horizon lines. It grows as you breathe in and shrinks as you breathe out.",
             iosVideo: "videos/ios_80s.mp4",
             iosPoster: "images/poster_ios_80s.png",
             androidVideo: "videos/android_80s.mp4",
             androidPoster: "images/poster_android_80s.png"
         },
         circles: {
-            name: "circles.",
-            desc: "rings that widen like ripples in still water as you breathe in, and draw back as you let go.",
+            name: "Circles.",
+            desc: "Rings that widen like ripples in still water as you breathe in, and draw back as you let go.",
             iosVideo: "videos/ios_circles.mp4",
             iosPoster: "images/poster_ios_circles.png",
             androidVideo: "videos/android_circles.mp4",
             androidPoster: "images/poster_android_circles.png"
         },
         angular: {
-            name: "angular.",
-            desc: "two circles of light, turning in opposite directions. one full turn for every breath.",
+            name: "Angular.",
+            desc: "Two circles of light, turning in opposite directions. One full turn for every breath.",
             iosVideo: "videos/ios_angular.mp4",
             iosPoster: "images/poster_ios_angular.png",
             androidVideo: "videos/android_angular.mp4",
@@ -74,7 +74,7 @@
     function setSiteTheme(mode) {
         document.documentElement.setAttribute("data-theme", mode);
         localStorage.setItem("calmaria_site_theme", mode);
-        if (siteThemeLabel) siteThemeLabel.textContent = mode === "light" ? "dark" : "light";
+        if (siteThemeLabel) siteThemeLabel.textContent = mode === "light" ? "Dark" : "Light";
         if (siteThemeColor) siteThemeColor.setAttribute("content", mode === "dark" ? "#0b0b0c" : "#ffffff");
     }
 
