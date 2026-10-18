@@ -813,3 +813,40 @@ html[data-theme="dark"] .watch-item img {
 @media (max-width: 520px) {
     .legal-toc ol { grid-template-columns: 1fr; }
 }
+
+
+/* =========================================================================
+   Footer appearance control (Auto / Light / Dark)
+   ========================================================================= */
+.atlas-appearance {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 14px;
+}
+
+.atlas-appearance-label {
+    margin-right: 8px;
+    color: var(--ds-t-tertiary);
+}
+
+.atlas-appearance button {
+    border: none;
+    background: transparent;
+    color: var(--ds-t-secondary);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 160ms ease, color 160ms ease;
+}
+
+.atlas-appearance button:hover { color: var(--ds-t-primary); }
+
+.atlas-appearance button.active {
+    background: var(--ds-t-card-hover);
+    color: var(--ds-t-super);
+}

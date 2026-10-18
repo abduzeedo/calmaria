@@ -81,20 +81,23 @@
         applyThemed(videoEl, false);
     }
 
-    // 1. Light / Dark Mode Toggle
-    const siteThemeBtn = document.getElementById("siteThemeBtn");
-    const siteThemeLabel = document.getElementById("siteThemeLabel");
+    // 1. Appearance: follows the device by default; the footer lets visitors pin Light or Dark
     const siteThemeColor = document.getElementById("siteThemeColor");
+    const appearanceButtons = document.querySelectorAll("[data-appearance]");
 
-    function setSiteTheme(mode, remember = true) {
+    function setSiteTheme(mode) {
         document.documentElement.setAttribute("data-theme", mode);
-        if (remember) {
-            try { localStorage.setItem("calmaria_site_theme", mode); } catch (_) {}
-        }
-        if (siteThemeLabel) siteThemeLabel.textContent = mode === "light" ? "Dark" : "Light";
         if (siteThemeColor) siteThemeColor.setAttribute("content", mode === "dark" ? "#0b0b0c" : "#ffffff");
         themed.forEach((_, el) => applyThemed(el, true));
         updateDuoVideo();
+    }
+
+    function syncAppearanceUI(choice) {
+        appearanceButtons.forEach((btn) => {
+            const on = btn.dataset.appearance === choice;
+            btn.classList.toggle("active", on);
+            btn.setAttribute("aria-pressed", String(on));
+        });
     }
 
     // The rotation loop: VP9 alpha everywhere except Safari, which gets HEVC alpha.
@@ -115,25 +118,33 @@
 
     ["heroIosVideo", "heroAndroidVideo", "showcaseIosVideo", "showcaseAndroidVideo"].forEach((id) => registerThemed(document.getElementById(id)));
 
-    // Follow the device until the visitor picks a side
     const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
-    let stored = null;
-    try { stored = localStorage.getItem("calmaria_site_theme"); } catch (_) {}
-    setSiteTheme(stored || (systemDark.matches ? "dark" : "light"), false);
-    if (systemDark.addEventListener) {
-        systemDark.addEventListener("change", (e) => {
-            let pick = null;
-            try { pick = localStorage.getItem("calmaria_site_theme"); } catch (_) {}
-            if (!pick) setSiteTheme(e.matches ? "dark" : "light", false);
-        });
+    const systemMode = () => (systemDark.matches ? "dark" : "light");
+    function savedChoice() {
+        try {
+            const v = localStorage.getItem("calmaria_site_theme");
+            return v === "light" || v === "dark" ? v : "auto";
+        } catch (_) { return "auto"; }
     }
 
-    if (siteThemeBtn) {
-        siteThemeBtn.addEventListener("click", () => {
-            const current = document.documentElement.getAttribute("data-theme") || "light";
-            setSiteTheme(current === "light" ? "dark" : "light");
+    function applyAppearance(choice, remember) {
+        if (remember) {
+            try {
+                if (choice === "auto") localStorage.removeItem("calmaria_site_theme");
+                else localStorage.setItem("calmaria_site_theme", choice);
+            } catch (_) {}
+        }
+        syncAppearanceUI(choice);
+        setSiteTheme(choice === "auto" ? systemMode() : choice);
+    }
+
+    applyAppearance(savedChoice(), false);
+    if (systemDark.addEventListener) {
+        systemDark.addEventListener("change", () => {
+            if (savedChoice() === "auto") setSiteTheme(systemMode());
         });
     }
+    appearanceButtons.forEach((btn) => btn.addEventListener("click", () => applyAppearance(btn.dataset.appearance, true)));
 
     // 2. Interactive 5-Theme Video Switcher
     const showcaseIosVideo = document.getElementById("showcaseIosVideo");
