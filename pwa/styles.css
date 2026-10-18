@@ -13,7 +13,7 @@
     --bg: #f2f2f7;
     --fg: #000000;
     --fg-muted: #8e8e93;
-    --divider: #000000;
+    --divider: rgba(0, 0, 0, 0.2);
     --accent: #ff3b30;
     --btn-bg: #fbfbff;
     --btn-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
@@ -44,7 +44,7 @@ html[data-theme="dark"] {
     --bg: #1c1c1e;
     --fg: #ffffff;
     --fg-muted: #8e8e93;
-    --divider: #ffffff;
+    --divider: rgba(255, 255, 255, 0.2);
     --accent: #ff453a;
     --btn-bg: #1a1a1c;
     --btn-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
@@ -56,6 +56,13 @@ html[data-theme="dark"] {
     --ios-blue: #0a84ff;
     --ios-green: #30d158;
     --dots: #ffffff;
+
+    --ring-0: #24125b;
+    --ring-1: #4b1a8f;
+    --ring-2: #750eb8;
+    --ring-3: #9e1bcd;
+    --ring-4: #ca4aab;
+    --glass-blur-opacity: 0.38;
 }
 
 /* ---------- Tokens: Android (Material 3) ---------- */
@@ -103,6 +110,15 @@ html[data-platform="android"][data-theme="dark"] {
     --row-sep: #454850;
     --ios-blue: #b5c4ff;
     --ios-green: #b5c4ff;
+
+    --ring-0: #4a516f;
+    --ring-1: #727cba;
+    --ring-2: #8e9fd6;
+    --ring-3: #a9bce8;
+    --ring-4: #cbdbef;
+    --glass-blur-opacity: 0.62;
+    --angular-from: #d0d8f8;
+    --angular-to: #4a5784;
 }
 
 *, *::before, *::after {
@@ -325,7 +341,7 @@ html[data-platform="android"] .slogan-title {
     background: var(--sun-gradient-blur);
     filter: blur(38px);
     clip-path: inset(50% -400% -400% -400%);
-    opacity: 0.96;
+    opacity: var(--glass-blur-opacity, 0.96);
 }
 
 /* 80s: bg-coloured gaps slice the lower half; JS builds them */

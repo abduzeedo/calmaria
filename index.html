@@ -10,6 +10,15 @@
     gtag('config', 'UA-167564527-1');
     </script>
     <meta charset="UTF-8">
+    <script>
+    // Set the theme before first paint: saved choice, otherwise the device setting
+    (function () {
+        var t = null;
+        try { t = localStorage.getItem("calmaria_site_theme"); } catch (e) {}
+        if (!t) t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+    })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calmaria — a quiet place to breathe</title>
     <meta name="description" content="Calmaria is a quiet place to breathe. One tap, one shape, nothing in the way. On iPhone, Android, Apple Watch, Wear OS and the web. Free, with no ads and no accounts.">
@@ -302,6 +311,7 @@
                 <a href="https://play.google.com/store/apps/details?id=com.abdz.breathing" target="_blank" rel="noopener">Android App</a>
                 <a href="pwa/index.html">Web App</a>
                 <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
             </div>
         </div>
     </footer>

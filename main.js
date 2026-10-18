@@ -47,23 +47,38 @@
         }
     };
 
-    // Safari does not render VP9 alpha, so it gets the HEVC-with-alpha version of the rotation loop
     const duoVideo = document.getElementById("duoRotateVideo");
-    if (duoVideo && /^((?!chrome|chromium|android|crios|fxios).)*safari/i.test(navigator.userAgent)) {
-        duoVideo.setAttribute("src", "videos/duo_rotate.mov");
-        duoVideo.querySelectorAll("source").forEach((n) => n.remove());
-        duoVideo.load();
+
+    // Device videos exist in a light and a dark appearance (name_dark.mp4 / poster_name_dark.png).
+    // `themed` remembers each video's light paths; the dark variant is derived from the site theme.
+    const themed = new Map();
+    const isDarkMode = () => document.documentElement.getAttribute("data-theme") === "dark";
+    const withMode = (path) => (path && isDarkMode() ? path.replace(/(\.[a-z0-9]+)$/i, "_dark$1") : path);
+
+    function applyThemed(videoEl, keepTime) {
+        const base = themed.get(videoEl);
+        if (!base) return;
+        const src = withMode(base.src);
+        if (base.poster) videoEl.setAttribute("poster", withMode(base.poster));
+        if (videoEl.getAttribute("src") !== src) {
+            const t = keepTime ? videoEl.currentTime : 0;
+            videoEl.setAttribute("src", src);
+            videoEl.load();
+            if (t) videoEl.addEventListener("loadedmetadata", () => { try { videoEl.currentTime = t; } catch (_) {} }, { once: true });
+        }
+        const p = videoEl.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+    }
+
+    function registerThemed(videoEl) {
+        if (!videoEl) return;
+        themed.set(videoEl, { src: videoEl.getAttribute("src"), poster: videoEl.getAttribute("poster") });
     }
 
     function switchVideo(videoEl, src, poster) {
         if (!videoEl) return;
-        if (poster) videoEl.setAttribute("poster", poster);
-        if (videoEl.getAttribute("src") !== src) {
-            videoEl.setAttribute("src", src);
-            videoEl.load();
-        }
-        const p = videoEl.play();
-        if (p && typeof p.catch === "function") p.catch(() => {});
+        themed.set(videoEl, { src, poster });
+        applyThemed(videoEl, false);
     }
 
     // 1. Light / Dark Mode Toggle
@@ -71,14 +86,47 @@
     const siteThemeLabel = document.getElementById("siteThemeLabel");
     const siteThemeColor = document.getElementById("siteThemeColor");
 
-    function setSiteTheme(mode) {
+    function setSiteTheme(mode, remember = true) {
         document.documentElement.setAttribute("data-theme", mode);
-        localStorage.setItem("calmaria_site_theme", mode);
+        if (remember) {
+            try { localStorage.setItem("calmaria_site_theme", mode); } catch (_) {}
+        }
         if (siteThemeLabel) siteThemeLabel.textContent = mode === "light" ? "Dark" : "Light";
         if (siteThemeColor) siteThemeColor.setAttribute("content", mode === "dark" ? "#0b0b0c" : "#ffffff");
+        themed.forEach((_, el) => applyThemed(el, true));
+        updateDuoVideo();
     }
 
-    setSiteTheme(localStorage.getItem("calmaria_site_theme") || "light");
+    // The rotation loop: VP9 alpha everywhere except Safari, which gets HEVC alpha.
+    const DUO_HAS_DARK = false;
+    function updateDuoVideo() {
+        if (!duoVideo) return;
+        const safari = /^((?!chrome|chromium|android|crios|fxios).)*safari/i.test(navigator.userAgent);
+        const name = "videos/duo_rotate" + (DUO_HAS_DARK && isDarkMode() ? "_dark" : "") + (safari ? ".mov" : ".webm");
+        if (duoVideo.getAttribute("src") === name) return;
+        const t = duoVideo.currentTime;
+        duoVideo.querySelectorAll("source").forEach((n) => n.remove());
+        duoVideo.setAttribute("src", name);
+        duoVideo.load();
+        if (t) duoVideo.addEventListener("loadedmetadata", () => { try { duoVideo.currentTime = t; } catch (_) {} }, { once: true });
+        const p = duoVideo.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+    }
+
+    ["heroIosVideo", "heroAndroidVideo", "showcaseIosVideo", "showcaseAndroidVideo"].forEach((id) => registerThemed(document.getElementById(id)));
+
+    // Follow the device until the visitor picks a side
+    const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+    let stored = null;
+    try { stored = localStorage.getItem("calmaria_site_theme"); } catch (_) {}
+    setSiteTheme(stored || (systemDark.matches ? "dark" : "light"), false);
+    if (systemDark.addEventListener) {
+        systemDark.addEventListener("change", (e) => {
+            let pick = null;
+            try { pick = localStorage.getItem("calmaria_site_theme"); } catch (_) {}
+            if (!pick) setSiteTheme(e.matches ? "dark" : "light", false);
+        });
+    }
 
     if (siteThemeBtn) {
         siteThemeBtn.addEventListener("click", () => {
