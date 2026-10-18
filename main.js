@@ -98,7 +98,7 @@
     }
 
     // The rotation loop: VP9 alpha everywhere except Safari, which gets HEVC alpha.
-    const DUO_HAS_DARK = false;
+    const DUO_HAS_DARK = true;
     function updateDuoVideo() {
         if (!duoVideo) return;
         const safari = /^((?!chrome|chromium|android|crios|fxios).)*safari/i.test(navigator.userAgent);
