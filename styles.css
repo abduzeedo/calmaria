@@ -859,3 +859,12 @@ html[data-theme="dark"] .watch-item img {
     .cta-long { display: none; }
     .cta-short { display: inline; }
 }
+
+
+.atlas-disclaimer {
+    margin: 36px 0 0;
+    max-width: 720px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ds-t-tertiary);
+}
