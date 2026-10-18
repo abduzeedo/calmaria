@@ -7,7 +7,7 @@
     const THEME_DATA = {
         dots: {
             name: "Dots.",
-            desc: "A flat grid of dots that inflates into a 3D sphere as you inhale, shimmers while you hold, and settles back as you exhale.",
+            desc: "A calm grid of dots. It swells into a sphere as you inhale, glimmers while you hold, and settles flat again as you let go.",
             iosVideo: "videos/ios_dots.mp4",
             iosPoster: "images/poster_ios_dots.png",
             androidVideo: "videos/android_dots.mp4",
@@ -15,7 +15,7 @@
         },
         glass: {
             name: "Glass.",
-            desc: "A warm gradient sun that rises with your breath and diffuses softly through a frosted glass horizon.",
+            desc: "A warm sun rising over frosted glass. It lifts with every inhale and melts into the blur as you let go.",
             iosVideo: "videos/ios_glass.mp4",
             iosPoster: "images/poster_ios_glass.png",
             androidVideo: "videos/android_glass.mp4",
@@ -23,7 +23,7 @@
         },
         "80s": {
             name: "80s.",
-            desc: "The original Calmaria artwork—a solar disc sliced across its lower half by thirteen progressive horizon lines.",
+            desc: "Where Calmaria began: a setting sun cut by horizon lines. It grows as you inhale and shrinks as you exhale.",
             iosVideo: "videos/ios_80s.mp4",
             iosPoster: "images/poster_ios_80s.png",
             androidVideo: "videos/android_80s.mp4",
@@ -31,7 +31,7 @@
         },
         circles: {
             name: "Circles.",
-            desc: "Five concentric rings that expand outward with staggered depth and respond subtly to your phone’s gyroscope.",
+            desc: "Rings that widen like ripples in still water as you inhale, then draw back in as you let go.",
             iosVideo: "videos/ios_circles.mp4",
             iosPoster: "images/poster_ios_circles.png",
             androidVideo: "videos/android_circles.mp4",
@@ -39,7 +39,7 @@
         },
         angular: {
             name: "Angular.",
-            desc: "Two stacked circles with mirrored conic gradients that rotate 360 degrees in opposite directions as you breathe.",
+            desc: "Two circles of light turning in opposite directions, one full turn across every breath.",
             iosVideo: "videos/ios_angular.mp4",
             iosPoster: "images/poster_ios_angular.png",
             androidVideo: "videos/android_angular.mp4",

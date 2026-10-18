@@ -1,5 +1,5 @@
 /**
- * Calmaria Web App (2026) — Full Feature Parity with Native iOS & Android Apps
+ * Calmaria Web App (2026) — Feature parity with the iOS and Android apps
  * Includes:
  * - 5 Visual Themes: Circles (parallax), Glass, 80s, Dots (3D inflating sphere), Angle Gradient
  * - Built-in & Custom Breathing Presets (478, 5555, 505, 711 + Custom Preset Editor)
@@ -413,7 +413,7 @@
     }
 
     // =========================================================================
-    // Native iOS ConfettiView(q: 200) Canvas Simulation (Matches Congratulations.swift)
+    // iOS ConfettiView(q: 200) canvas simulation (Matches Congratulations.swift)
     // =========================================================================
     const confettiCanvas = document.getElementById("iosConfettiCanvas");
     const CONFETTI_COLORS = ["#007AFF", "#34C759", "#FFCC00", "#FF3B30", "#FF2D55", "#FF9500", "#AF52DE"];
@@ -481,7 +481,7 @@
 
     function lerp(a, b, t) { return a + (b - a) * t; }
 
-    // Stage geometry: every artwork is sized from the stage like the native layouts
+    // Stage geometry: every artwork is sized from the stage like the iOS and Android layouts
     const stageSize = { w: 402, h: 520 };
     let dotsColor = "#1c1c1e";
 
@@ -526,7 +526,7 @@
                 state.breathProgress = 0.0;
             }
         } else {
-            // Idle: the artwork rests at its smallest size, like the native apps
+            // Idle: the artwork rests at its smallest size, like the iOS and Android apps
             state.breathProgress += (0 - state.breathProgress) * 0.12;
         }
 
@@ -619,7 +619,7 @@
     }
 
     // =========================================================================
-    // Presets, Statistics & Modals UI (Inset Grouped Native iOS/Android Style)
+    // Presets, Statistics & Modals UI (inset-grouped iOS / Android style)
     // =========================================================================
     function renderPresetsList() {
         const all = getAllPresets();

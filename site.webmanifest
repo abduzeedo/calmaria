@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Calmaria",
+    "short_name": "Calmaria",
     "icons": [
         {
             "src": "android-icon-96x96.png",
@@ -10,5 +10,6 @@
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
-    "display": "standalone"
+    "display": "standalone",
+    "description": "A quiet breathing app. One tap, one shape, one slow breath."
 }

@@ -445,6 +445,12 @@ body {
     gap: 20px;
 }
 
+.atlas-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
 .atlas-card {
     background: var(--ds-t-card);
     border-radius: 28px;
@@ -663,6 +669,7 @@ body {
         padding-right: 20px;
     }
     .atlas-grid-2,
+    .atlas-grid-3,
     .atlas-card--wide,
     .atlas-footer-inner {
         grid-template-columns: 1fr;
