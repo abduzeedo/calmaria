@@ -1,226 +1,781 @@
-:root{
-    /* Colors */
-    --background: #000000;
-    --primary-color: #ffffff;
-    --blur-background:rgba(0,0,0,.2);
-    --font-family: 'Inter', Helvetica, Arial,sans-serif;
-    --h1: 112px;
-    --h2: 28px;
-    --h3: 24px;
-    --h4: 72px;
-    --h5: 56px;
-    --body: 24px;
-    --body2: 18px;
-    --base-margin: 16px;
-    --base-margin_2: 32px;
+/* =========================================================================
+   Calmaria Web App
+   Measured against the shipping iOS (iPhone 17 Pro, 402 pt) and Android
+   (Pixel, 411 dp) builds. <html data-platform="ios|android"> and
+   <html data-theme="light|dark"> are set by main.js; both follow the device.
+   ========================================================================= */
+
+/* ---------- Tokens: iOS (default) ---------- */
+:root {
+    --platform-pad: 24px;
+    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", system-ui, sans-serif;
+
+    --bg: #f2f2f7;
+    --fg: #000000;
+    --fg-muted: #8e8e93;
+    --divider: #000000;
+    --accent: #ff3b30;
+    --btn-bg: #fbfbff;
+    --btn-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+
+    --sheet-bg: #f2f2f7;
+    --row-bg: #ffffff;
+    --row-hover: #e5e5ea;
+    --row-sep: rgba(60, 60, 67, 0.16);
+    --ios-blue: #007aff;
+    --ios-green: #34c759;
+    --dots: #1c1c1e;
+
+    /* Circles, outer → inner */
+    --ring-0: #c94aab;
+    --ring-1: #9e1bcd;
+    --ring-2: #750eb8;
+    --ring-3: #4b1a8f;
+    --ring-4: #24125b;
+
+    /* Sun gradient shared by Glass and 80s */
+    --sun-gradient: linear-gradient(180deg, #fff502 0%, #f8b12a 33%, #f3794d 61%, #ed446d 86%, #ea2b80 100%);
+    --sun-gradient-blur: linear-gradient(180deg, #fff502 0%, #f8a02e 28%, #f4577d 60%, #ff2fc4 100%);
+    --angular-from: #bf90fb;
+    --angular-to: #14024d;
 }
-.day:root{
-    --background: #fff;
-    --primary-color: #000;
-    --blur-background:rgba(255,255,255,.2);
+
+html[data-theme="dark"] {
+    --bg: #1c1c1e;
+    --fg: #ffffff;
+    --fg-muted: #8e8e93;
+    --divider: #ffffff;
+    --accent: #ff453a;
+    --btn-bg: #1a1a1c;
+    --btn-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
+
+    --sheet-bg: #000000;
+    --row-bg: #1c1c1e;
+    --row-hover: #2c2c2e;
+    --row-sep: rgba(84, 84, 88, 0.6);
+    --ios-blue: #0a84ff;
+    --ios-green: #30d158;
+    --dots: #ffffff;
 }
-body{
-    font-family: var(--font-family);
-    font-size: var(--body);
-    color: var(--primary-color);
-    background: var(--background);
-    
+
+/* ---------- Tokens: Android (Material 3) ---------- */
+html[data-platform="android"] {
+    --platform-pad: 16px;
+    --font-sans: Roboto, "Google Sans", "Inter", system-ui, sans-serif;
+
+    --bg: #faf8fe;
+    --fg: #30323b;
+    --fg-muted: #86868f;
+    --divider: #b0b1bc;
+    --accent: #b3261e;
+    --dots: #30323b;
+
+    --sheet-bg: #f1f0f8;
+    --row-bg: #dde2f9;
+    --row-hover: #d3d8ef;
+    --row-sep: #b0b1bc;
+    --ios-blue: #4e5e8b;
+    --ios-green: #4e5e8b;
+
+    --ring-0: #a2a6c0;
+    --ring-1: #707697;
+    --ring-2: #545a7b;
+    --ring-3: #444a68;
+    --ring-4: #3b415c;
+
+    --sun-gradient: linear-gradient(180deg, #fff500 0%, #e60098 55%, #e60098 100%);
+    --sun-gradient-blur: linear-gradient(180deg, #fff500 0%, #e8608a 50%, #f3b08e 100%);
+    --angular-from: #b5c4f4;
+    --angular-to: #1b2f63;
 }
-/* 
-Typography
-*/
-h1,h2,h3,h4,h5{
-    font-weight: 900;
+
+html[data-platform="android"][data-theme="dark"] {
+    --bg: #0d0e12;
+    --fg: #e4e5f0;
+    --fg-muted: #999aa3;
+    --divider: #454850;
+    --accent: #f2b8b5;
+    --dots: #e4e5f0;
+
+    --sheet-bg: #121318;
+    --row-bg: #272a3a;
+    --row-hover: #30344a;
+    --row-sep: #454850;
+    --ios-blue: #b5c4ff;
+    --ios-green: #b5c4ff;
 }
-h1{
-    font-size: var(--h1);
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
-h2{
-    font-size: var(--h2);
-    line-height: 140%;
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
 }
-h3{
-    font-size: var(--h3);
-    line-height: 120%;
+
+button, input {
+    font-family: inherit;
+    color: inherit;
 }
-h4{
-   font-size: var(--h4); 
+
+.hidden { display: none !important; }
+.tabular { font-variant-numeric: tabular-nums; }
+html[data-platform="ios"] .android-only,
+html:not([data-platform="android"]) .android-only { display: none; }
+html[data-platform="android"] .ios-only { display: none; }
+
+/* =========================================================================
+   Shell + toolbar
+   iOS: wordmark + 44 pt round button, 24 pt side padding.
+   Android: wordmark + "options" text button on a 56 dp row, 16 dp padding.
+   ========================================================================= */
+.pwa-shell {
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    max-width: 580px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--platform-pad) max(env(safe-area-inset-bottom, 0px), var(--safe-bottom, 0px), 24px);
+    user-select: none;
 }
-h5{
-   font-size: var(--h5); 
+
+html[data-platform="android"] .pwa-shell {
+    padding-bottom: calc(max(env(safe-area-inset-bottom, 0px), var(--safe-bottom, 0px)) + 16px);
 }
-a{
-    color: var(--primary-color);
-}
-/* 
-Keyframe Animation
-*/
-@keyframes breathing{
-    0%{
-        transform: scale(1); 
-    }
-    19.04%{
-        transform: scale(1.8);
-    }
-    53%{
-        transform: scale(1.8);
-    }
-    100%{
-        transform: scale(1);
-    }
-}
-/* 
-App container 
-*/
-.container{
-    position: absolute;
-    top:0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden !important;
-}
-section#app{
-    position: fixed;
-    left: var(--base-margin);
-    right: var(--base-margin);
-    top: var(--base-margin);
-    bottom: calc(var(--base-margin_2) * 2);
-    display: grid;
-    justify-items: center;
+
+.pwa-topbar {
+    flex: none;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    height: 44px;
+    margin-top: max(env(safe-area-inset-top, 0px), var(--safe-top, 16px));
+    z-index: 20;
 }
-/* 
-Custom elements
-*/
-#repetition,#title,#instructions,#timer,.bottomLeft{
+
+.brand-link {
+    margin-left: 4px;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 22px;
+    text-decoration: none;
+    color: var(--fg);
+}
+
+.action-btn {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    margin-right: -8px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background: var(--btn-bg);
+    box-shadow: var(--btn-shadow);
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.action-icon-options,
+.action-icon-stop {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-icon-stop { color: var(--fg); }
+
+.options-text {
+    display: none;
+}
+
+html[data-platform="android"] .pwa-topbar {
+    height: 56px;
+    margin-top: max(env(safe-area-inset-top, 0px), var(--safe-top, 24px));
+}
+
+html[data-platform="android"] .brand-link {
+    margin-left: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+html[data-platform="android"] .action-btn {
+    width: auto;
+    height: 56px;
+    margin-right: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--accent);
+}
+
+html[data-platform="android"] .action-btn .action-icon-options,
+html[data-platform="android"] .action-btn .action-icon-stop { display: none; }
+
+html[data-platform="android"] .options-text {
+    display: inline;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* =========================================================================
+   Main layout (portrait: slogan → stage → tracker)
+   ========================================================================= */
+.pwa-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.layout-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--divider);
+}
+
+html[data-platform="android"] .header-divider { margin: 0; }
+html[data-platform="ios"] .header-divider { display: none; }
+
+.slogan-block { flex: none; z-index: 10; }
+
+.slogan-title {
+    margin: 10px 0 21px;
+    font-size: 34px;
+    line-height: 41px;
+    font-weight: 700;
+}
+
+html[data-platform="android"] .slogan-title {
+    margin: 16px 0;
+    font-size: 36px;
+    line-height: 44px;
+    font-weight: 600;
+}
+
+.split-vertical-divider { display: none; }
+
+/* ---------- Theme stage ---------- */
+.theme-stage {
+    position: relative;
+    flex: 1;
+    min-height: 200px;
+    cursor: pointer;
+    outline: none;
+    overflow: visible;
+}
+
+.theme-layer {
     position: absolute;
-    z-index: 1000;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
 }
-#repetition{
-    right: 0;
-    top: 0;
-}
-#title{
-    left: 0;
-    top: 0;
-}
-#instructions,.bottomLeft{
-    left: 0;
-    bottom: 0;
-}
-#timer{
-    bottom: 0;
-    right: 0;
-}
-#circle{
+
+/* Circles — outer ring is the largest; JS scales each one */
+.concentric-ring {
     position: absolute;
-    width: 50vw;
-    height: 50vw;
-    margin-top: 10vw;
-    background: linear-gradient(#FFF500,#E60098);
+    border-radius: 50%;
+    width: var(--ring-base, 300px);
+    height: var(--ring-base, 300px);
+    will-change: transform;
+}
+.ring-0 { background: var(--ring-0); }
+.ring-1 { background: var(--ring-1); }
+.ring-2 { background: var(--ring-2); }
+.ring-3 { background: var(--ring-3); }
+.ring-4 { background: var(--ring-4); }
+
+/* Glass + 80s share one sun disc; JS sets --sun-d (diameter) per frame */
+.sun-group {
+    position: relative;
+    width: var(--sun-max, 300px);
+    height: var(--sun-max, 300px);
+    will-change: transform;
+}
+
+.sun-disc {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--sun-gradient);
+}
+
+/* Glass: top half sharp, bottom half a heavy blur that spreads to the edges */
+.glass-sharp { clip-path: inset(0 0 50% 0); }
+.glass-blur {
+    background: var(--sun-gradient-blur);
+    filter: blur(38px);
+    clip-path: inset(50% -400% -400% -400%);
+    opacity: 0.96;
+}
+
+/* 80s: bg-coloured gaps slice the lower half; JS builds them */
+.lines-80s {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.line-80s-gap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+}
+
+/* Dots */
+#dotsCanvas { width: 100%; height: 100%; display: block; }
+
+/* Angular gradient */
+.angular-pair {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.angular-circle {
+    width: var(--ang-d, 232px);
+    height: var(--ang-d, 232px);
+    border-radius: 50%;
+    will-change: transform;
+}
+/* Seams run down from the centre of the upper circle and up from the centre of the lower one */
+.angular-top { background: conic-gradient(from 180deg, var(--angular-to), var(--angular-from)); }
+.angular-bottom { background: conic-gradient(from 0deg, var(--angular-from), var(--angular-to)); }
+
+/* ---------- Tracker ---------- */
+.tracker-bar {
+    flex: none;
+    display: grid;
+    grid-template-columns: 1fr 64px 64px;
+    gap: 0 24px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+html[data-platform="android"] .tracker-bar {
+    grid-template-columns: 1fr 69px 69px;
+    gap: 0 16px;
+}
+
+.tracker-col { display: flex; flex-direction: column; min-width: 0; }
+
+.tracker-label {
+    margin-top: 13px;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.tracker-value {
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+html[data-platform="android"] .tracker-label {
+    margin-top: 8px;
+    line-height: 16px;
+    letter-spacing: 0.06em;
+}
+
+html[data-platform="android"] .tracker-value {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+/* =========================================================================
+   Wide screens (foldables, tablets, desktop): two columns split by a
+   vertical divider — text and tracker left, artwork right.
+   ========================================================================= */
+@media (min-width: 768px) {
+    .pwa-shell { max-width: 1180px; }
+
+    .pwa-main {
+        display: grid;
+        grid-template-columns: 1fr 1px 1fr;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+            "slogan vdiv stage"
+            "spacer vdiv stage"
+            "tracker vdiv stage";
+        column-gap: var(--platform-pad);
+        margin-top: 0;
+    }
+
+    .slogan-block { grid-area: slogan; }
+    .tracker-bar { grid-area: tracker; }
+    .theme-stage { grid-area: stage; height: 100%; min-height: 360px; }
+
+    .split-vertical-divider {
+        display: block;
+        grid-area: vdiv;
+        width: 1px;
+        background: var(--divider);
+        margin: 16px 0 0;
+    }
+
+    /* The toolbar only spans the text column */
+    .pwa-topbar { width: calc((100% - 1px - 2 * var(--platform-pad)) / 2); }
+}
+
+/* =========================================================================
+   Sheets — iOS: inset-grouped pill rows. Android: Material bottom sheet.
+   ========================================================================= */
+.sheet-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.32);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.26s ease;
+}
+
+.sheet-modal.active { opacity: 1; pointer-events: auto; }
+
+@media (min-width: 768px) {
+    .sheet-modal { align-items: center; padding: 24px; }
+}
+
+.sheet-container {
+    width: 100%;
+    max-width: 560px;
+    height: calc(100dvh - max(env(safe-area-inset-top, 0px), 16px));
+    max-height: 860px;
+    background: var(--sheet-bg);
+    border-radius: 40px 40px 0 0;
+    padding: 20px 16px max(24px, env(safe-area-inset-bottom));
+    display: flex;
+    flex-direction: column;
+    transform: translateY(28px);
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 768px) {
+    .sheet-container { border-radius: 32px; height: 82dvh; }
+}
+
+.sheet-modal.active .sheet-container { transform: translateY(0); }
+
+.ios-nav-header { padding: 0 8px 4px; }
+
+.ios-nav-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 44px;
+}
+
+.ios-close-text-btn {
+    border: none;
+    background: var(--btn-bg);
+    box-shadow: var(--btn-shadow);
+    color: var(--accent);
+    font-size: 17px;
+    font-weight: 400;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.ios-large-title {
+    font-size: 34px;
+    font-weight: 700;
+    margin: 18px 0 0;
+    line-height: 41px;
+}
+
+.ios-grouped-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ios-section { display: flex; flex-direction: column; }
+
+.ios-section-header {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--fg-muted);
+    padding: 12px 20px 8px;
+}
+
+.ios-section-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 4px;
+}
+
+.ios-section-footer {
+    font-size: 13px;
+    color: var(--fg-muted);
+    padding: 8px 20px 0;
+}
+
+.ios-inset-group {
+    background: var(--row-bg);
+    border-radius: 26px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.ios-mt-10 { margin-top: 10px; }
+
+.ios-row {
+    width: 100%;
+    min-height: 52px;
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--row-sep);
+    text-align: left;
+    font-size: 17px;
+}
+
+.ios-row:last-child { border-bottom: none; }
+.ios-row-btn { cursor: pointer; transition: background-color 0.15s ease; }
+.ios-row-btn:hover { background-color: var(--row-hover); }
+.ios-row-stack { display: flex; flex-direction: column; gap: 2px; }
+.ios-row-title { font-size: 17px; font-weight: 400; color: var(--fg); }
+.ios-row-sub { font-size: 13px; color: var(--fg-muted); }
+.ios-row-right { display: flex; align-items: center; gap: 8px; }
+.ios-row-meta { font-size: 17px; color: var(--fg-muted); }
+.ios-chevron { font-size: 20px; color: var(--fg-muted); line-height: 1; }
+.ios-blue-icon, .ios-blue-text { color: var(--ios-blue); }
+.ios-blue-text .ios-row-title, .ios-blue-text span { color: var(--ios-blue); }
+
+.ios-check-icon {
+    color: var(--ios-blue);
+    font-size: 17px;
+    font-weight: 600;
+    opacity: 0;
+}
+.theme-option-card.active .ios-check-icon,
+.preset-item.active .ios-check-icon { opacity: 1; }
+
+/* Toggle: iOS 51×31 green, Android M3 52×32 tonal */
+.ios-switch {
+    position: relative;
+    display: inline-block;
+    width: 51px;
+    height: 31px;
+    flex-shrink: 0;
+}
+.ios-switch input { opacity: 0; width: 0; height: 0; }
+.ios-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: rgba(120, 120, 128, 0.32);
+    transition: 0.22s ease;
+    border-radius: 31px;
+}
+.ios-slider::before {
+    position: absolute;
+    content: "";
+    height: 27px;
+    width: 27px;
+    left: 2px;
+    bottom: 2px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    transition: 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
     border-radius: 50%;
 }
-#circle.animate{
-    animation-fill-mode: forwards;
-    animation-name: breathing;
-    animation-duration: 19s;
-    animation-iteration-count: 4;
-    animation-timing-function: ease-in-out;
+.ios-switch input:checked + .ios-slider { background-color: var(--ios-green); }
+.ios-switch input:checked + .ios-slider::before { transform: translateX(20px); }
+
+html[data-platform="android"] .ios-switch { width: 52px; height: 32px; }
+html[data-platform="android"] .ios-slider {
+    background-color: transparent;
+    border: 2px solid #777a86;
+    border-radius: 16px;
 }
-#graphic{
-    background: var(--blur-background);
-    border-top: 1px solid var(--blur-background);
-    height: 35vh;
-    margin: 0;
-    position: absolute;
-    bottom: 0;
-    left:  calc(-1*var(--base-margin));
-    right:  calc(-1*var(--base-margin));
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    display: none;
-    
+html[data-platform="android"] .ios-slider::before {
+    width: 16px;
+    height: 16px;
+    left: 6px;
+    bottom: 6px;
+    background: #777a86;
+    box-shadow: none;
 }
-#graphic80{
-    height: 35vh;
-    top: 48vh;
-    position: absolute;
-    bottom: 0;
-    left:  calc(-1*var(--base-margin));
-    right:  calc(-1*var(--base-margin));
+html[data-platform="android"] .ios-switch input:checked + .ios-slider {
+    background-color: var(--ios-green);
+    border-color: var(--ios-green);
 }
-#graphic80 img{
-    width: 100%;
-    height: auto;
+html[data-platform="android"] .ios-switch input:checked + .ios-slider::before {
+    width: 24px;
+    height: 24px;
+    left: 2px;
+    bottom: 2px;
+    background: #f9f8ff;
+    transform: translateX(20px);
 }
-.day #graphic80{
-    filter: invert();
+
+/* Android sheet: drag handle, "Options" title, tonal 28 dp cards, small caps labels */
+html[data-platform="android"] .sheet-container {
+    border-radius: 28px 28px 0 0;
+    padding-top: 16px;
 }
-/* 
-Congratulations page
-*/
-section#bs_congrats,
-section#bs_about{
-    z-index: 100000;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--background);
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    transition: transform 488ms ease-in-out;
-    transform: translateY(110vh);
-    padding: 0 var(--base-margin);
+html[data-platform="android"] .sheet-container::before {
+    content: "";
+    align-self: center;
+    width: 32px;
+    height: 4px;
+    margin-bottom: 8px;
+    border-radius: 2px;
+    background: #b6b6bf;
 }
-section#bs_congrats.active,
-section#bs_about.active{
-    transform: translateY(0);
+html[data-platform="android"] .ios-nav-top { display: none; }
+html[data-platform="android"] .ios-large-title { margin: 28px 0 0; font-size: 36px; font-weight: 600; line-height: 44px; }
+html[data-platform="android"] .ios-nav-header { padding: 0 16px; }
+html[data-platform="android"] .ios-section-header {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--fg);
+    padding: 16px 16px 8px;
 }
-#bs_congrats h2{
-    font-size: 40px;
-    position: absolute;
-    left: var(--base-margin);
-    right: var(--base-margin);
-    hyphens: auto;
-    -webkit-hyphens: auto;
+html[data-platform="android"] .ios-inset-group { border-radius: 20px; }
+html[data-platform="android"] .ios-row { min-height: 56px; padding: 8px 16px; border-bottom-color: var(--row-sep); }
+html[data-platform="android"] .ios-row-title { font-weight: 500; }
+html[data-platform="android"] .ios-grouped-scroll { gap: 0; padding: 8px 16px 24px; }
+html[data-platform="android"] .ios-close-text-btn { background: transparent; box-shadow: none; }
+
+/* Segmented control + custom preset form */
+.segmented-control {
+    display: inline-flex;
+    background: rgba(118, 118, 128, 0.24);
+    padding: 2px;
+    border-radius: 9px;
 }
-.bottomLeft{
-    bottom: calc(var(--base-margin_2) * 2);
-    left: var(--base-margin);
-}
-.bottomRight{
-    bottom: calc(var(--base-margin_2) * 2);
-    right: var(--base-margin);
-}
-.footer{
-    font-size: 14px;
-    position: absolute;
-    opacity: .6;
-}
-.close{
-    position: absolute;
-    right: var(--base-margin);
-    top: var(--base-margin);
+.segmented-control button {
+    border: none;
+    background: transparent;
+    color: var(--fg-muted);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 7px;
     cursor: pointer;
-    font-size: 18px;
-    line-height: 48px;
-    font-weight: 900;
 }
-.content{
-    position: absolute;
-    left: var(--base-margin);
-    right: var(--base-margin);
-    font-size: 18px;
-    line-height: 26px;
+.segmented-control button.active { background: var(--row-bg); color: var(--fg); }
+
+.custom-preset-form { margin-top: 10px; }
+.ios-text-input, .ios-num-input {
+    border: none;
+    background: transparent;
+    text-align: right;
+    font-size: 17px;
+    color: var(--ios-blue);
+    outline: none;
 }
-.content h2{
-    font-size: 48px;
+.ios-num-input { width: 64px; }
+.ios-save-btn {
+    border: none;
+    background: var(--ios-blue);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 999px;
+    cursor: pointer;
 }
-.content span{
-    display: block;
-    margin: 8px 0 32px 0;
+.delete-preset-btn {
+    border: none;
+    background: rgba(255, 59, 48, 0.14);
+    color: var(--accent);
+    border-radius: 8px;
+    padding: 4px 9px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
 }
+
+/* Congratulations */
+.ios-congrats-sheet { background: var(--sheet-bg); justify-content: space-between; }
+.ios-congrats-sub { margin: 6px 0 0; font-size: 17px; color: var(--fg); }
+.ios-confetti-stage { position: relative; flex: 1; width: 100%; min-height: 180px; overflow: hidden; }
+#iosConfettiCanvas { width: 100%; height: 100%; display: block; }
+.ios-congrats-bottom { display: flex; flex-direction: column; gap: 14px; padding: 4px 8px 0; }
+.ios-feel-heading { margin: 4px 0 0; font-size: 22px; font-weight: 500; }
+.ios-mood-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    justify-items: center;
+    padding: 10px 0 14px;
+}
+.ios-mood-emoji {
+    border: none;
+    background: transparent;
+    font-size: 38px;
+    line-height: 1;
+    padding: 8px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.ios-mood-emoji.selected { transform: scale(1.48); }
+.congrats-summary-bar, .stats-summary-bar { cursor: default; }
+
+/* Statistics + About */
+.history-row {
+    width: 100%;
+    padding: 11px 16px;
+    display: grid;
+    grid-template-columns: 32px 1fr auto 28px 28px;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--row-sep);
+    font-size: 15px;
+}
+.history-row:last-child { border-bottom: none; }
+.history-idx, .history-time { color: var(--fg-muted); font-size: 13px; }
+.history-preset { font-weight: 600; }
+.empty-history { padding: 20px 16px; font-size: 14px; color: var(--fg-muted); }
+.about-hero h3 { font-size: 26px; margin: 0 0 4px; }
+.phonetic { color: var(--fg-muted); margin: 0 0 12px; }
+.about-hero p, .about-techniques p { font-size: 15px; line-height: 1.55; color: var(--fg-muted); margin: 0 0 16px; }
+.about-techniques h4 { font-size: 17px; margin: 18px 0 6px; }
+.about-footer { display: flex; justify-content: space-between; font-size: 13px; color: var(--fg-muted); padding-top: 12px; }
+.about-body { padding: 8px 20px 24px; }

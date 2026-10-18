@@ -1,5 +1,5 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-platform="ios">
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167564527-1"></script>
@@ -7,69 +7,443 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'UA-167564527-1');
     </script>
+    <meta charset="UTF-8">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="shortcut icon" href="favicons/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="Calmaria">
+    <meta name="theme-color" content="#f2f2f7" id="metaThemeColor">
+    <link rel="shortcut icon" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-
-    <!-- Apple -->
-    <meta name="apple-mobile-web-app-title" content="Calmaria">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
-  
+    <link rel="manifest" href="site.webmanifest">
 
-	<link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
-    <script src="confetti.js" type="application/javascript" ></script>
-    
-<title>Calmaria - Focus / Breathe / Relax</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="confetti.js" defer></script>
+    <script src="main.js" defer></script>
+
+    <title>Calmaria — Focus. Breathe. Relax.</title>
 </head>
 <body>
-    <div class="container">
-        <section id="app">
-            <h1 id="repetition">00</h1>
-            <h2 id="title">
-                Focus /<br/>
-                Breathe /<br/>
-                Relax /<br/>
-            </h2>
-            <h3 id="instructions" class="bottomLeft">Tap <br/>circle to<br/>start</h3>
-            <h4 id="timer">00</h4>
-            <div id="circle"></div>
-            <div id="graphic"></div>
-            <div id="graphic80">
-                <img src="sunset_lines.svg"/>
+    <div class="pwa-shell" id="pwaShell">
+        <!-- Toolbar: wordmark + settings (iOS round button / Android "options") -->
+        <header class="pwa-topbar">
+            <a href="../index.html" class="brand-link" title="Back to Calmaria Website" aria-label="Calmaria Home">calmaria</a>
+            <button type="button" class="action-btn" id="optionsOrStopBtn" aria-label="Settings">
+                <span class="action-icon-options" id="iconOptions">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="2.5" y1="6.5" x2="21.5" y2="6.5"/><circle cx="15.5" cy="6.5" r="2" style="fill:var(--btn-bg)"/><line x1="2.5" y1="12" x2="21.5" y2="12"/><circle cx="8.5" cy="12" r="2" style="fill:var(--btn-bg)"/><line x1="2.5" y1="17.5" x2="21.5" y2="17.5"/><circle cx="16.5" cy="17.5" r="2" style="fill:var(--btn-bg)"/></svg>
+                </span>
+                <span class="action-icon-stop hidden" id="iconStop">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="3.5"/></svg>
+                </span>
+                <span class="options-text">options</span>
+            </button>
+        </header>
+
+        <!-- Main Responsive Layout:
+             - Portrait (<768px): Stacked 1-column (Slogan -> Theme Stage -> TrackerInfo)
+             - Desktop / Foldable (>=768px): 2-column split (Left: Slogan + TrackerInfo | Center: Vertical Divider | Right: Theme Stage) -->
+        <main class="pwa-main">
+            <!-- 1. Slogan Block (Top-left on Desktop/Foldable, Top on Portrait) -->
+            <div class="slogan-block">
+                <div class="layout-divider header-divider android-only"></div>
+                <h1 class="slogan-title">
+                    Focus.<br>
+                    Breathe.<br>
+                    Relax.
+                </h1>
+                <div class="layout-divider"></div>
+            </div>
+
+            <!-- 2. Vertical Split Divider (Desktop / Foldable 2-Column Mode) -->
+            <div class="split-vertical-divider" aria-hidden="true"></div>
+
+            <!-- 3. Interactive Visual Theme Stage (Right column on Desktop/Foldable, Center on Portrait) -->
+            <div class="theme-stage" id="themeStage" role="button" tabindex="0" aria-label="Tap to start or stop breathing exercise">
+                <!-- Theme 0: Circles (5 concentric circles with parallax) -->
+                <div class="theme-layer theme-circles" id="stageCircles">
+                    <div class="concentric-ring ring-0"></div>
+                    <div class="concentric-ring ring-1"></div>
+                    <div class="concentric-ring ring-2"></div>
+                    <div class="concentric-ring ring-3"></div>
+                    <div class="concentric-ring ring-4"></div>
+                </div>
+
+                <!-- Theme 1: Glass (sharp upper sun, heavily blurred lower half) -->
+                <div class="theme-layer theme-glass hidden" id="stageGlass">
+                    <div class="sun-group" id="glassSun">
+                        <div class="sun-disc glass-blur"></div>
+                        <div class="sun-disc glass-sharp"></div>
+                    </div>
+                </div>
+
+                <!-- Theme 2: 80s (sun sliced by progressively thicker horizon gaps) -->
+                <div class="theme-layer theme-80s hidden" id="stage80s">
+                    <div class="sun-group" id="retroSun">
+                        <div class="sun-disc"></div>
+                        <div class="lines-80s" id="lines80sContainer"></div>
+                    </div>
+                </div>
+
+                <!-- Theme 3: Dots (Real-time 60fps 3D inflating sphere canvas matching StripeSphereView) -->
+                <div class="theme-layer theme-dots hidden" id="stageDots">
+                    <canvas id="dotsCanvas"></canvas>
+                </div>
+
+                <!-- Theme 4: Angle Gradient (Dual opposite rotating conic-gradient circles) -->
+                <div class="theme-layer theme-angular hidden" id="stageAngular">
+                    <div class="angular-pair">
+                        <div class="angular-circle angular-top" id="angularTop"></div>
+                        <div class="angular-circle angular-bottom" id="angularBottom"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Bottom 3-Column TrackerInfo (Bottom-left on Desktop/Foldable, Bottom on Portrait) -->
+            <div class="tracker-bar" id="trackerBar">
+                <div class="tracker-col tracker-col-main">
+                    <div class="layout-divider"></div>
+                    <span class="tracker-label" id="phaseTopLabel">TAP TO</span>
+                    <span class="tracker-value" id="phaseBottomLabel">START</span>
+                </div>
+                <div class="tracker-col tracker-col-num">
+                    <div class="layout-divider"></div>
+                    <span class="tracker-label">FOR</span>
+                    <span class="tracker-value tabular" id="timerDisplay">00</span>
+                </div>
+                <div class="tracker-col tracker-col-num">
+                    <div class="layout-divider"></div>
+                    <span class="tracker-label">REPS</span>
+                    <span class="tracker-value tabular" id="repsDisplay">04</span>
+                </div>
+            </div>
+        </main>
+
+        
+
+        <!-- =================================================================
+             SHEET 1: NATIVE iOS / ANDROID INSET-GROUPED SETTINGS (Matches Settings.swift)
+             ================================================================= -->
+        <section class="sheet-modal" id="settingsSheet" aria-hidden="true" role="dialog" aria-label="Settings">
+            <div class="sheet-container ios-settings-sheet">
+                <header class="ios-nav-header">
+                    <div class="ios-nav-top">
+                        <span></span>
+                        <button type="button" class="ios-close-text-btn" id="closeSettingsBtn">Close</button>
+                    </div>
+                    <h2 class="ios-large-title" id="settingsTitle">Settings</h2>
+                </header>
+
+                <div class="ios-grouped-scroll">
+                    <!-- Group: Vibration -->
+                    <div class="ios-section">
+                        <div class="ios-section-header">Vibration</div>
+                        <div class="ios-inset-group">
+                            <div class="ios-row">
+                                <span class="ios-row-title">Enable Vibration</span>
+                                <label class="ios-switch">
+                                    <input type="checkbox" id="vibrateToggle" checked>
+                                    <span class="ios-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Group: Sound -->
+                    <div class="ios-section">
+                        <div class="ios-section-header">Sound</div>
+                        <div class="ios-inset-group">
+                            <div class="ios-row">
+                                <span class="ios-row-title">Enable Sound</span>
+                                <label class="ios-switch">
+                                    <input type="checkbox" id="soundToggle" checked>
+                                    <span class="ios-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Group: Preview Sound Cues (Matches Settings.swift soundPreviewRow) -->
+                    <div class="ios-section" id="soundPreviewSection">
+                        <div class="ios-section-header">Preview Sound Cues</div>
+                        <div class="ios-inset-group">
+                            <button type="button" class="ios-row ios-row-btn sound-cue-btn" data-cue="tick">
+                                <div class="ios-row-stack">
+                                    <span class="ios-row-title">Tick</span>
+                                    <span class="ios-row-sub">Soft per-second countdown pulse</span>
+                                </div>
+                                <svg class="ios-blue-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                            </button>
+                            <button type="button" class="ios-row ios-row-btn sound-cue-btn" data-cue="transition">
+                                <div class="ios-row-stack">
+                                    <span class="ios-row-title">Phase Transition</span>
+                                    <span class="ios-row-sub">Harmonic chime between inhale, hold, and exhale</span>
+                                </div>
+                                <svg class="ios-blue-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                            </button>
+                            <button type="button" class="ios-row ios-row-btn sound-cue-btn" data-cue="start">
+                                <div class="ios-row-stack">
+                                    <span class="ios-row-title">Exercise Start</span>
+                                    <span class="ios-row-sub">Ascending tone cue when beginning</span>
+                                </div>
+                                <svg class="ios-blue-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                            </button>
+                            <button type="button" class="ios-row ios-row-btn sound-cue-btn" data-cue="stop">
+                                <div class="ios-row-stack">
+                                    <span class="ios-row-title">Exercise Stop</span>
+                                    <span class="ios-row-sub">Gentle downward resolving tone</span>
+                                </div>
+                                <svg class="ios-blue-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                            </button>
+                            <button type="button" class="ios-row ios-row-btn sound-cue-btn" data-cue="success">
+                                <div class="ios-row-stack">
+                                    <span class="ios-row-title">Completed</span>
+                                    <span class="ios-row-sub">Warm ascending major triad</span>
+                                </div>
+                                <svg class="ios-blue-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                            </button>
+                        </div>
+                        <div class="ios-section-footer">Synthesized live with the Cuelume sound palette.</div>
+                    </div>
+
+                    <!-- Group: Breathing Techniques (Matches PresetSelectionView & PresetEditorView) -->
+                    <div class="ios-section">
+                        <div class="ios-section-header">Breathing techniques</div>
+                        <div class="ios-inset-group" id="presetsList"></div>
+                        <div class="ios-inset-group ios-mt-10">
+                            <button type="button" class="ios-row ios-row-btn ios-blue-text" id="showCustomPresetFormBtn">
+                                <span>Create Custom Preset</span>
+                                <span class="ios-chevron">+</span>
+                            </button>
+                        </div>
+
+                        <!-- Native Stepper Custom Preset Form -->
+                        <form class="ios-inset-group custom-preset-form hidden" id="customPresetForm">
+                            <div class="ios-row">
+                                <label for="cpName" class="ios-row-title">Preset Name</label>
+                                <input type="text" id="cpName" class="ios-text-input" placeholder="Morning Calm" maxlength="18" required>
+                            </div>
+                            <div class="ios-row">
+                                <label for="cpInhale" class="ios-row-title">Inhale (s)</label>
+                                <input type="number" id="cpInhale" class="ios-num-input" min="1" max="20" value="4" required>
+                            </div>
+                            <div class="ios-row">
+                                <label for="cpHold1" class="ios-row-title">Hold (s)</label>
+                                <input type="number" id="cpHold1" class="ios-num-input" min="0" max="20" value="7" required>
+                            </div>
+                            <div class="ios-row">
+                                <label for="cpExhale" class="ios-row-title">Exhale (s)</label>
+                                <input type="number" id="cpExhale" class="ios-num-input" min="1" max="20" value="8" required>
+                            </div>
+                            <div class="ios-row">
+                                <label for="cpHold2" class="ios-row-title">Hold After Exhale (s)</label>
+                                <input type="number" id="cpHold2" class="ios-num-input" min="0" max="20" value="0" required>
+                            </div>
+                            <div class="ios-row">
+                                <label for="cpReps" class="ios-row-title">Repetitions</label>
+                                <input type="number" id="cpReps" class="ios-num-input" min="1" max="20" value="4" required>
+                            </div>
+                            <div class="ios-row ios-form-actions">
+                                <button type="button" class="ios-close-text-btn" id="cancelCustomPresetBtn">Cancel</button>
+                                <button type="submit" class="ios-save-btn">Save Preset</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Group: Theme Selection -->
+                    <div class="ios-section">
+                        <div class="ios-section-header">Theme selection</div>
+                        <div class="ios-inset-group" id="settingsThemeList">
+                            <button type="button" class="ios-row ios-row-btn theme-option-card active" data-theme-idx="0">
+                                <span class="ios-row-title">Circles</span>
+                                <span class="ios-check-icon">✓</span>
+                            </button>
+                            <button type="button" class="ios-row ios-row-btn theme-option-card" data-theme-idx="1">
+                                <span class="ios-row-title">Glass</span>
+                                <span class="ios-check-icon">✓</span>
+                            </button>
+                            <button type="button" class="ios-row ios-row-btn theme-option-card" data-theme-idx="2">
+                                <span class="ios-row-title">80s</span>
+                                <span class="ios-check-icon">✓</span>
+                            </button>
+                            <button type="button" class="ios-row ios-row-btn theme-option-card" data-theme-idx="3">
+                                <span class="ios-row-title">Dots</span>
+                                <span class="ios-check-icon">✓</span>
+                            </button>
+                            <button type="button" class="ios-row ios-row-btn theme-option-card" data-theme-idx="4">
+                                <span class="ios-row-title">Angle Gradient</span>
+                                <span class="ios-check-icon">✓</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Group: More Information -->
+                    <div class="ios-section">
+                        <div class="ios-section-header">More information</div>
+                        <div class="ios-inset-group">
+                            <button type="button" class="ios-row ios-row-btn" id="openStatsFromSettings">
+                                <span class="ios-row-title">Statistics</span>
+                                <div class="ios-row-right">
+                                    <span class="ios-row-meta" id="settingsStatsCount">0 sessions</span>
+                                    <span class="ios-chevron">›</span>
+                                </div>
+                            </button>
+                            <button type="button" class="ios-row ios-row-btn" id="openAboutFromSettings">
+                                <span class="ios-row-title">About</span>
+                                <span class="ios-chevron">›</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-        <section id="bs_congrats">
-            <span id="close" class="close">close</span>
-            <h2>Congratulations</h2>
-            <h3 class="bottomLeft">Breathing<br/>
-                session<br/>
-                completed<br/></h3>
-        </section>
-        <section id="bs_about">
-            <span id="aClose" class="close">close</span>
-            <div class="content">
-                <h2>Calmaria</h2>
-                <span>[ feminine ] /k&#593;&#650;ma&rsquo;&#638;ia/</span>
-                <p>In Portuguese means calmness, tranquility, calm. 
-                    It&rsquo;s often used by seamen and surfers to indicate 
-                    that there are no waves in the ocean. That mood 
-                    perfectly translates to what this app intends to 
-                    do, bring peace of mind and tranquility to your 
-                    busy day to day life. Just breathe and relax..</p>
+
+        <!-- =================================================================
+             SHEET 2: AUTHENTIC iOS CONGRATULATIONS VIEW (Matches Congratulations.swift)
+             ================================================================= -->
+        <section class="sheet-modal" id="congratsSheet" aria-hidden="true" role="dialog" aria-label="Congratulations">
+            <div class="sheet-container ios-congrats-sheet">
+                <header class="ios-nav-header">
+                    <div class="ios-nav-top">
+                        <span></span>
+                        <button type="button" class="ios-close-text-btn" id="closeCongratsBtn">Close</button>
+                    </div>
+                    <h2 class="ios-large-title">Congratulations</h2>
+                    <p class="ios-congrats-sub">You've completed your breathing exercise.</p>
+                </header>
+
+                <!-- Open Center Confetti Canvas (200 falling/bouncing particles like ConfettiView) -->
+                <div class="ios-confetti-stage">
+                    <canvas id="iosConfettiCanvas"></canvas>
+                </div>
+
+                <!-- Bottom Section: Divider + How do you feel? + 4 Borderless Emojis + 3-Col Summary -->
+                <div class="ios-congrats-bottom">
+                    <div class="layout-divider"></div>
+                    <h3 class="ios-feel-heading">How do you feel?</h3>
+                    <div class="ios-mood-row" id="moodPicker">
+                        <button type="button" class="ios-mood-emoji selected" data-mood="😀" aria-label="Happy">😀</button>
+                        <button type="button" class="ios-mood-emoji" data-mood="😐" aria-label="Neutral">😐</button>
+                        <button type="button" class="ios-mood-emoji" data-mood="😠" aria-label="Tense">😠</button>
+                        <button type="button" class="ios-mood-emoji" data-mood="🥴" aria-label="Lightheaded">🥴</button>
+                    </div>
+
+                    <div class="tracker-bar congrats-summary-bar">
+                        <div class="tracker-col tracker-col-main">
+                            <div class="layout-divider"></div>
+                            <span class="tracker-label">EXERCISE</span>
+                            <span class="tracker-value" id="congratsExercise">478</span>
+                        </div>
+                        <div class="tracker-col tracker-col-num">
+                            <div class="layout-divider"></div>
+                            <span class="tracker-label">REPS</span>
+                            <span class="tracker-value tabular" id="congratsReps">4</span>
+                        </div>
+                        <div class="tracker-col tracker-col-num">
+                            <div class="layout-divider"></div>
+                            <span class="tracker-label">TOTAL</span>
+                            <span class="tracker-value tabular" id="congratsTotal">1</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="bottomLeft footer">Copyright Steale LLC</p>
-            <p class="bottomRight footer">Typeface: <a href="https://rsms.me/inter/">Inter</a></p>
+        </section>
+
+        <!-- =================================================================
+             SHEET 3: STATISTICS & HISTORY (Matches Statistics.swift)
+             ================================================================= -->
+        <section class="sheet-modal" id="statsSheet" aria-hidden="true" role="dialog" aria-label="Statistics">
+            <div class="sheet-container ios-settings-sheet">
+                <header class="ios-nav-header">
+                    <div class="ios-nav-top">
+                        <span></span>
+                        <button type="button" class="ios-close-text-btn" id="closeStatsBtn">Close</button>
+                    </div>
+                    <h2 class="ios-large-title">Statistics</h2>
+                </header>
+
+                <div class="ios-grouped-scroll">
+                    <div class="tracker-bar stats-summary-bar">
+                        <div class="tracker-col tracker-col-main">
+                            <div class="layout-divider"></div>
+                            <span class="tracker-label">MOST USED</span>
+                            <span class="tracker-value" id="statsMostUsed">478</span>
+                        </div>
+                        <div class="tracker-col tracker-col-num">
+                            <div class="layout-divider"></div>
+                            <span class="tracker-label">TOTAL</span>
+                            <span class="tracker-value tabular" id="statsTotal">00</span>
+                        </div>
+                        <div class="tracker-col tracker-col-num">
+                            <div class="layout-divider"></div>
+                            <span class="tracker-label">FEEL</span>
+                            <span class="tracker-value" id="statsFeel">😀</span>
+                        </div>
+                    </div>
+
+                    <div class="ios-section">
+                        <div class="ios-section-header-row">
+                            <span class="ios-section-header">History</span>
+                            <button type="button" class="ios-close-text-btn" id="clearHistoryBtn">Clear</button>
+                        </div>
+                        <div class="ios-inset-group" id="historyList"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             SHEET 4: ABOUT & BREATHING GUIDE (Matches About.swift)
+             ================================================================= -->
+        <section class="sheet-modal" id="aboutSheet" aria-hidden="true" role="dialog" aria-label="About Calmaria">
+            <div class="sheet-container ios-settings-sheet">
+                <header class="ios-nav-header">
+                    <div class="ios-nav-top">
+                        <span></span>
+                        <button type="button" class="ios-close-text-btn" id="closeAboutBtn">Close</button>
+                    </div>
+                    <h2 class="ios-large-title">About</h2>
+                </header>
+
+                <div class="ios-grouped-scroll about-body">
+                    <div class="about-hero">
+                        <h3>Calmaria</h3>
+                        <p class="phonetic">[ feminine ] /kɑʊma’ɾia/</p>
+                        <p>
+                            In Portuguese means calmness, tranquility, calm. It’s often used by seamen and surfers to indicate that there are no waves in the ocean. That mood perfectly translates to what this app intends to do: bring peace of mind and tranquility to your busy day-to-day life. Just breathe and relax.
+                        </p>
+                    </div>
+
+                    <div class="layout-divider"></div>
+
+                    <div class="about-techniques">
+                        <h4>4-7-8 Exercise</h4>
+                        <p>The 4-7-8 breathing technique, also known as “relaxing breath,” involves breathing in for 4 seconds, holding the breath for 7 seconds, and exhaling for 8 seconds. This breathing pattern aims to reduce anxiety or help people get to sleep.</p>
+
+                        <h4>5555 Exercise (Box Breathing)</h4>
+                        <p>Box breathing, also known as square breathing, is a technique used when taking slow, deep breaths. It can heighten performance and concentration while also being a powerful stress reliever.</p>
+
+                        <h4>505 Exercise (Coherent Breathing)</h4>
+                        <p>Coherent breathing is a simple way to increase heart rate variability (HRV) and balance the autonomic nervous system by inhaling for 5 seconds and exhaling for 5 seconds without holding.</p>
+
+                        <h4>7-11 Exercise</h4>
+                        <p>A powerful natural tranquilizer for the nervous system: breathe in deeply for 7 seconds and breathe out slowly for 11 seconds. Extending the exhale stimulates the vagus nerve and triggers deep relaxation.</p>
+                    </div>
+
+                    <footer class="about-footer">
+                        <span>Copyright Steale LLC</span>
+                        <span>Typeface: <a href="https://rsms.me/inter/" target="_blank" rel="noopener">Inter</a></span>
+                    </footer>
+                </div>
+            </div>
         </section>
     </div>
-    <script src="main.js" type="application/javascript" ></script>
 </body>
 </html>

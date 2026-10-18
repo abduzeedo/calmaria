@@ -1,108 +1,269 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=0">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167564527-1"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'UA-167564527-1');
     </script>
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calmaria — Focus / Breathe / Relax</title>
+    <meta name="description" content="A native, local-first breathing companion for iOS, Android, Foldables, Watch, and Web. Free forever, no ads, no subscriptions.">
 
-	<link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff" id="siteThemeColor">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
-    
-<title>Calmaria - Focus / Breathe / Relax</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="main.js" defer></script>
 </head>
 <body>
-    <div class="wrapper">
-    <section id="s1">
-        <div class="container">
-            <h1>Calmaria </h1>
-            <h2>Focus /<br/>Breathe /<br/>Relax /</h2>
-            <a class="playBadge" href="https://play.google.com/store/apps/details?id=com.abdz.breathing"><img src="images/google-play-badge.png"/></a>
-            <a class="appstoreBadge" href="https://apps.apple.com/us/app/calmaria/id1523108871"><img src="images/app-store-badge.svg"/></a>
-            <div class="heroImage">
-                <img src="images/calmaria_front.png" class="hero"/>
-                <!-- <iframe href="app/index.html" /> -->
-                <div class="animation">
-                    <img src="images/sun.png" class="sun">
-                    <img src="images/sunset_lines.svg" class="lines">
+    <!-- Top Progressive Edge Blur (Atlas style) -->
+    <div class="atlas-top-fade" aria-hidden="true"></div>
+
+    <!-- 100%-Width Floating Pill Header -->
+    <header class="atlas-header">
+        <nav class="atlas-header-inner" aria-label="Primary">
+            <a href="#top" class="atlas-brand">
+                <span class="atlas-brand-dot" aria-hidden="true"></span>
+                <span>Calmaria</span>
+            </a>
+            <div class="atlas-header-links">
+                <a href="#themes" class="atlas-menu-button">Themes</a>
+                <a href="#features" class="atlas-menu-button">Features</a>
+                <a href="#faq" class="atlas-menu-button">FAQ</a>
+                <button type="button" class="atlas-menu-button atlas-theme-toggle" id="siteThemeBtn" aria-label="Toggle Light or Dark appearance">
+                    <span id="siteThemeLabel">Dark</span>
+                </button>
+            </div>
+            <a href="#download" class="atlas-action-button atlas-action-button--primary atlas-action-button--round" id="headerDownloadCta">
+                <span>Start breathing now</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg>
+            </a>
+        </nav>
+    </header>
+
+    <main id="top" class="atlas-page">
+        <!-- =================================================================
+             1. HERO — Left-Aligned Two-Tone Display + Download Actions + Modern Phone Stage
+             ================================================================= -->
+        <section class="atlas-section atlas-hero">
+            <h1 class="atlas-display">
+                <span class="t-primary">Focus. Breathe. Relax. </span>A native, local, and distraction-free breathing companion for iOS, Android, and Web.
+            </h1>
+
+            <div class="atlas-actions-row" id="download">
+                <a href="https://apps.apple.com/us/app/calmaria/id1523108871" target="_blank" rel="noopener" class="atlas-action-button atlas-action-button--primary">
+                    <span>Download for iOS</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.abdz.breathing" target="_blank" rel="noopener" class="atlas-action-button atlas-action-button--secondary">
+                    <span>Download for Android</span>
+                </a>
+                <a href="pwa/index.html" class="atlas-inline-link">Or breathe in your browser →</a>
+            </div>
+
+            <!-- Minimal Showcase Surface with Modern iPhone 16 Pro & Pixel 9 Pro Frames Running Looping Videos -->
+            <div class="atlas-stage-card">
+                <div class="phones-pair">
+                    <div class="phone-col">
+                        <div class="phone-hardware phone-ios">
+                            <video class="phone-screen-video" id="heroIosVideo" src="videos/ios_glass.mp4" poster="images/poster_ios_glass.png" autoplay loop muted playsinline preload="auto"></video>
+                            <img class="phone-frame-overlay" src="images/frame_ios_overlay.png" width="900" height="1533" fetchpriority="high" alt="Calmaria on iPhone 16 Pro">
+                        </div>
+                    </div>
+                    <div class="phone-col">
+                        <div class="phone-hardware phone-android">
+                            <video class="phone-screen-video" id="heroAndroidVideo" src="videos/android_80s.mp4" poster="images/poster_android_80s.png" autoplay loop muted playsinline preload="auto"></video>
+                            <img class="phone-frame-overlay" src="images/frame_android_overlay.png" width="900" height="1533" fetchpriority="high" alt="Calmaria on Google Pixel 9 Pro">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="s2">
-        <div class="container">
-            <p>Access to information has helped us evolve rapidly but not 
-            without side effects. Misinformation and the strong polarization of  
-            opinions are amplified by our confirmation bias tendencies. 
-            What to believe, who is right, who is wrong?</p>
+        </section>
 
-            <p>Questions with no answers inevitably create anxiety. 
-            The good news is that there is a simple way to reduce it, 
-            just breathe. It works! </p>
-            
-            <p>There are several different breathing techniques and 
-            exercises that are designed to bring your body to a 
-            deep relaxation state. Holding your breath for a 
-            period of time allows your body to better oxygenate. 
-            One of the simplest techniques is the 4-7-8 method 
-            which is simply inhaling for 4 seconds, holding your 
-            breath for 7 seconds and exhaling for 8 seconds. </p>
-            <img src="images/calmaria_3pers.png" class="hero2"/>
+        <!-- =================================================================
+             2. THEMES — Left-Aligned Two-Tone Heading + Interactive Video Switcher
+             ================================================================= -->
+        <section class="atlas-section" id="themes">
+            <h2 class="atlas-h2">
+                <span class="t-primary">Five ways to see your breath. </span>Dots for dimension. Glass for warmth. 80s for nostalgia. Circles and Angular for pure motion.
+            </h2>
+
+            <div class="atlas-pills-row" role="tablist" aria-label="Visual themes">
+                <button type="button" class="atlas-pill active" role="tab" aria-selected="true" data-theme="dots">Dots</button>
+                <button type="button" class="atlas-pill" role="tab" aria-selected="false" data-theme="glass">Glass</button>
+                <button type="button" class="atlas-pill" role="tab" aria-selected="false" data-theme="80s">80s</button>
+                <button type="button" class="atlas-pill" role="tab" aria-selected="false" data-theme="circles">Circles</button>
+                <button type="button" class="atlas-pill" role="tab" aria-selected="false" data-theme="angular">Angular</button>
+            </div>
+
+            <div class="atlas-stage-card">
+                <div class="phones-pair">
+                    <div class="phone-col">
+                        <div class="phone-hardware phone-ios">
+                            <video class="phone-screen-video" id="showcaseIosVideo" src="videos/ios_dots.mp4" poster="images/poster_ios_dots.png" autoplay loop muted playsinline></video>
+                            <img class="phone-frame-overlay" src="images/frame_ios_overlay.png" width="900" height="1533" loading="lazy" alt="iPhone theme animation">
+                        </div>
+                    </div>
+                    <div class="phone-col">
+                        <div class="phone-hardware phone-android">
+                            <video class="phone-screen-video" id="showcaseAndroidVideo" src="videos/android_dots.mp4" poster="images/poster_android_dots.png" autoplay loop muted playsinline></video>
+                            <img class="phone-frame-overlay" src="images/frame_android_overlay.png" width="900" height="1533" loading="lazy" alt="Google Pixel theme animation">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="atlas-caption" id="showcaseCaption">
+                <span class="t-primary">Dots. </span>A flat grid of dots that inflates into a 3D sphere as you inhale, shimmers while you hold, and settles back as you exhale.
+            </p>
+        </section>
+
+        <!-- =================================================================
+             3. FEATURES — Left-Aligned Two-Tone Heading + Foldable & Watch Showcase
+             ================================================================= -->
+        <section class="atlas-section" id="features">
+            <h2 class="atlas-h2">
+                <span class="t-primary">Yours, and it stays that way. </span>No accounts, no ads, no subscriptions. Designed to adapt to every screen you own.
+            </h2>
+
+            <div class="atlas-grid-2">
+                <!-- Full-Width Foldable & Responsive Split Layout Card -->
+                <article class="atlas-card atlas-card--wide">
+                    <div class="atlas-card-wide-copy">
+                        <p class="atlas-body">
+                            <span class="t-primary">Adaptive for foldables, tablets, and desktop. </span>Unfold your phone or open the Web App on a wide screen and Calmaria automatically splits into a balanced two-column layout—keeping typography and timers on the left and your breathing visual on the right.
+                        </p>
+                    </div>
+                    <div class="foldable-stage">
+                        <video class="foldable-rotate-video" id="duoRotateVideo" poster="images/poster_duo_rotate.png" width="1360" height="1360" autoplay loop muted playsinline preload="auto" aria-label="Calmaria on iPhone Duo rotating between portrait and landscape layouts">
+                            <source src="videos/duo_rotate.webm" type="video/webm">
+                        </video>
+                    </div>
+                </article>
+
+                <article class="atlas-card">
+                    <p class="atlas-body">
+                        <span class="t-primary">Four proven rhythms, or your own. </span>Switch between 4-7-8 for sleep, 5-5-5-5 Box for focus, 5-0-5 for coherence, and 7-11 for deep calm—or create custom presets.
+                    </p>
+                    <div class="atlas-preset-chips">
+                        <span>4 · 7 · 8</span>
+                        <span>5 · 5 · 5 · 5</span>
+                        <span>5 · 0 · 5</span>
+                        <span>7 · 11</span>
+                        <span>Custom</span>
+                    </div>
+                </article>
+
+                <article class="atlas-card">
+                    <p class="atlas-body">
+                        <span class="t-primary">Cuelume synthesized sound. </span>Warm, procedural harmonic chimes and soft ticks generated in real time so you can breathe with your eyes closed.
+                    </p>
+                    <div class="atlas-sound-pills">
+                        <button type="button" class="atlas-pill-sm" data-play-cue="tick">▶ Tick</button>
+                        <button type="button" class="atlas-pill-sm" data-play-cue="transition">▶ Phase chime</button>
+                        <button type="button" class="atlas-pill-sm" data-play-cue="success">▶ Complete</button>
+                        <button type="button" class="atlas-pill-sm" data-play-cue="stop">▶ Stop</button>
+                    </div>
+                </article>
+
+                <article class="atlas-card atlas-card--media">
+                    <p class="atlas-body">
+                        <span class="t-primary">Mood check-in and local stats. </span>Celebrate every completed session with confetti, log how you feel, and track your streak—stored strictly on your device.
+                    </p>
+                    <div class="card-phone-full">
+                        <div class="phone-hardware phone-ios">
+                            <video class="phone-screen-video" src="videos/ios_congrats.mp4" poster="images/poster_ios_congrats.png" autoplay loop muted playsinline loading="lazy"></video>
+                            <img class="phone-frame-overlay" src="images/frame_ios_overlay.png" width="900" height="1533" loading="lazy" alt="Calmaria iOS Congratulations screen with confetti and mood check-in">
+                        </div>
+                    </div>
+                </article>
+
+                <article class="atlas-card atlas-card--media">
+                    <p class="atlas-body">
+                        <span class="t-primary">Native on Apple Watch and Pixel Watch. </span>Start a guided breathing session right from your wrist on watchOS and Wear OS, with haptic phase cues and instant sync.
+                    </p>
+                    <div class="card-watch-pair">
+                        <figure class="watch-item">
+                            <img src="images/watch_apple_modern.png" width="504" height="570" loading="lazy" alt="Calmaria on Apple Watch Series 10">
+                            <figcaption>Apple Watch</figcaption>
+                        </figure>
+                        <figure class="watch-item">
+                            <img src="images/watch_pixel_modern.png" width="548" height="538" loading="lazy" alt="Calmaria on Google Pixel Watch 3">
+                            <figcaption>Pixel Watch</figcaption>
+                        </figure>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- =================================================================
+             4. QUESTIONS? ANSWERS. — Left-Aligned Clean FAQ
+             ================================================================= -->
+        <section class="atlas-section" id="faq">
+            <h2 class="atlas-h2">
+                <span class="t-primary">Questions? Answers.</span>
+            </h2>
+
+            <div class="atlas-faq">
+                <details name="faq" class="atlas-faq-item" open>
+                    <summary>What does Calmaria mean?</summary>
+                    <div class="atlas-faq-answer">
+                        <p>In Portuguese, <em>calmaria</em> (/kɑʊma’ɾia/) means calmness and tranquility—used by sailors and surfers when there are no waves in the ocean.</p>
+                    </div>
+                </details>
+
+                <details name="faq" class="atlas-faq-item">
+                    <summary>Is Calmaria really free with no subscriptions?</summary>
+                    <div class="atlas-faq-answer">
+                        <p>Yes. Calmaria is completely free across iOS, Android, Watch, and Web. There are no subscriptions, no ads, and no accounts.</p>
+                    </div>
+                </details>
+
+                <details name="faq" class="atlas-faq-item">
+                    <summary>Does the Web App have the same features as the iOS and Android apps?</summary>
+                    <div class="atlas-faq-answer">
+                        <p>Yes. The <a href="pwa/index.html">Web App</a> includes the responsive two-column layout, all five visual themes (Circles, Glass, 80s, 3D Dots, and Angle Gradient), custom presets, Cuelume synthesized sound, mood check-ins, and session history.</p>
+                    </div>
+                </details>
+
+                <details name="faq" class="atlas-faq-item">
+                    <summary>Where is my breathing data stored?</summary>
+                    <div class="atlas-faq-answer">
+                        <p>Strictly on your device. Calmaria never uploads your presets, session history, or mood check-ins to any server. Read the <a href="privacy.html">Privacy Policy</a>.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <!-- Minimal Left-Aligned Footer (Atlas style) -->
+    <footer class="atlas-footer">
+        <div class="atlas-footer-inner">
+            <div class="atlas-footer-credits">
+                <p>Designed and developed by <a href="https://abduzeedo.com" target="_blank" rel="noopener">abdz.do</a></p>
+                <p>©2026 Steale LLC</p>
+            </div>
+            <div class="atlas-footer-links">
+                <a href="https://apps.apple.com/us/app/calmaria/id1523108871" target="_blank" rel="noopener">iOS App</a>
+                <a href="https://play.google.com/store/apps/details?id=com.abdz.breathing" target="_blank" rel="noopener">Android App</a>
+                <a href="pwa/index.html">Web App</a>
+                <a href="privacy.html">Privacy</a>
+            </div>
         </div>
-    </section>
-    <section id="s3">
-        <div class="container">
-            <h2>Calmaria</h2>
-            <span>[ feminine ] /k&#593;&#650;ma&rsquo;&#638;ia/</span>
-            <p>In Portuguese means calmness, tranquility, calm. 
-            It’s often used by seamen and surfers to 
-            indicate that there are no waves in the ocean. 
-            That mood perfectly translates to what 
-            this app intends to do, bring peace of mind 
-            and tranquility to your busy day to day life. 
-            Just breathe and relax.</p>
-            <img src="images/calmaria_2front.png" class="hero3"/>
-        </div>
-    </section>
-    <section id="s4">
-        <div class="container">
-        <p>Available for</p>
-        <ul>
-            <li><a href="https://play.google.com/store/apps/details?id=com.abdz.breathing">Android</a></li>
-            <li><a href="https://apps.apple.com/us/app/calmaria/id1523108871">iOS</a></li>
-            <li><a href="https://calmaria.app/pwa/">PWA Progressive Web App</a></li>
-        </ul>
-        </p>
-        <div class="badges"><a class="playBadge" href="https://play.google.com/store/apps/details?id=com.abdz.breathing"><img src="images/google-play-badge.png"/></a>
-            <a class="appstoreBadge" href="https://apps.apple.com/us/app/calmaria/id1523108871"><img src="images/app-store-badge.svg"/></a></div>
-        <footer>Proudly designed and developed by the folks over at <a href="https://abduzeedo.com">abdz.do</a></footer>
-        </div>
-    </section>
-</div>  
+    </footer>
 </body>
 </html>

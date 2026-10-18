@@ -1,464 +1,673 @@
-:root{
-    /* Colors */
-    --background: #000000;
-    --background_inverted: #ffffff;
-    --primary-color: #ffffff;
-    --primary-inverted: #000000;
-    --blur-background:rgba(0,0,0,.2);
-    --font-family: 'Inter', Helvetica, Arial,sans-serif;
-    --h1: 48px;
-    --h2: 34px;
-    --h3: 32px;
-    --h4: 28px;
-    --h5: 24px;
-    --body: 20px;
-    --body2: 16px;
-    --base-margin: 16px;
-    --base-margin_2: 32px;
+/* =========================================================================
+   Atlas-Inspired Design System for Calmaria
+   Exact tokens: Super (#111111), Primary (93%), Secondary (50%), Tertiary (28%), Card (4%)
+   ========================================================================= */
+:root,
+html[data-theme="light"] {
+    --ds-bg: #ffffff;
+    --ds-t-super: #111111;
+    --ds-t-primary: rgba(17, 17, 17, 0.93);
+    --ds-t-secondary: rgba(17, 17, 17, 0.50);
+    --ds-t-tertiary: rgba(17, 17, 17, 0.28);
+    --ds-t-card: rgba(17, 17, 17, 0.04);
+    --ds-t-card-hover: rgba(17, 17, 17, 0.07);
+    --ds-header-bg: rgba(255, 255, 255, 0.84);
+    --ds-btn-fg: #ffffff;
+    --font-sans: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
 }
-body{
-    font-family: var(--font-family);
-    font-size: var(--body);
-    padding: 0;
-    line-height: 26px;
-    background: var(--background);
+
+html[data-theme="dark"] {
+    --ds-bg: #0b0b0c;
+    --ds-t-super: #f5f5f7;
+    --ds-t-primary: rgba(245, 245, 247, 0.94);
+    --ds-t-secondary: rgba(245, 245, 247, 0.52);
+    --ds-t-tertiary: rgba(245, 245, 247, 0.30);
+    --ds-t-card: rgba(255, 255, 255, 0.05);
+    --ds-t-card-hover: rgba(255, 255, 255, 0.09);
+    --ds-header-bg: rgba(18, 18, 20, 0.84);
+    --ds-btn-fg: #0b0b0c;
 }
-/* 
-Typography
-*/
-h1,h2,h3,h4,h5{
-    font-weight: 900;
+
+*, *::before, *::after {
+    box-sizing: border-box;
 }
-h1{
-    font-size: var(--h1);
-    line-height: 120%;
+
+html {
+    scroll-behavior: smooth;
 }
-h2{
-    font-size: var(--h2);
-    line-height: 140%;
+
+body {
+    margin: 0;
+    background-color: var(--ds-bg);
+    color: var(--ds-t-primary);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 200ms ease, color 200ms ease;
 }
-h3{
-    font-size: var(--h3);
-    line-height: 120%;
+
+.t-primary {
+    color: var(--ds-t-primary);
 }
-h4{
-   font-size: var(--h4); 
+
+/* =========================================================================
+   Top Progressive Blur & 100%-Width Floating Pill Header
+   ========================================================================= */
+.atlas-top-fade {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 64px;
+    z-index: 90;
+    pointer-events: none;
+    background: linear-gradient(to bottom, var(--ds-bg) 15%, transparent 100%);
+    opacity: 0.75;
 }
-h5{
-   font-size: var(--h5); 
+
+.atlas-header {
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px;
 }
-a{
-    color: var(--primary-color);
+
+.atlas-header-inner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 6px 6px 6px 22px;
+    border-radius: 999px;
+    background: var(--ds-header-bg);
+    box-shadow: inset 0 0 0 1px var(--ds-t-card);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+}
+
+.atlas-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    color: var(--ds-t-super);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.atlas-brand-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #FFF500 0%, #E60098 100%);
+}
+
+.atlas-header-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.atlas-menu-button {
+    position: relative;
+    isolation: isolate;
+    border: none;
+    background: transparent;
+    color: var(--ds-t-super);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    padding: 10px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.atlas-menu-button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--ds-t-card);
+    opacity: 0;
+    transform: scale(0.88);
+    transition: opacity 200ms ease, transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.atlas-menu-button:hover::before,
+.atlas-menu-button:focus-visible::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* =========================================================================
+   Action Buttons (Continuous 22px Squircle / 999px Round)
+   ========================================================================= */
+.atlas-action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 22px;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 180ms ease, background-color 180ms ease, box-shadow 240ms ease;
+}
+
+.atlas-action-button--primary {
+    background-color: var(--ds-t-super);
+    color: var(--ds-btn-fg);
+}
+
+.atlas-action-button--secondary {
+    background-color: var(--ds-t-card);
+    color: var(--ds-t-super);
+}
+
+.atlas-action-button--secondary:hover {
+    background-color: var(--ds-t-card-hover);
+}
+
+.atlas-action-button--round {
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-size: 16px;
+}
+
+.atlas-action-button svg {
+    transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.atlas-action-button:hover svg {
+    transform: translateX(3px);
+}
+
+.atlas-inline-link {
+    color: var(--ds-t-secondary);
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 8px 4px;
+    transition: color 180ms ease;
+}
+
+.atlas-inline-link:hover {
+    color: var(--ds-t-primary);
+}
+
+/* Highlight pulse when 'Start breathing now' scrolls to #download */
+.atlas-actions-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 48px;
+    scroll-margin-top: 120px;
+    border-radius: 26px;
+    transition: box-shadow 300ms ease;
+}
+
+.atlas-actions-row.highlight-pulse .atlas-action-button--primary,
+.atlas-actions-row.highlight-pulse .atlas-action-button--secondary {
+    transform: scale(1.04);
+}
+
+/* =========================================================================
+   Page Container & Left-Aligned Two-Tone Typography
+   ========================================================================= */
+.atlas-page {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.atlas-section {
+    padding: 88px 0 40px;
+    text-align: left;
+}
+
+.atlas-hero {
+    padding-top: 64px;
+}
+
+/* H1 Display: First sentence Primary (93%), continuation Tertiary (28%) */
+.atlas-display {
+    font-size: clamp(38px, 5.4vw, 68px);
+    font-weight: 500;
+    line-height: 1.07;
+    letter-spacing: -0.03em;
+    color: var(--ds-t-tertiary);
+    max-width: 980px;
+    margin: 0 0 36px 0;
+    text-align: left;
+}
+
+/* H2 Section: First sentence Primary (93%), continuation Tertiary (28%) */
+.atlas-h2 {
+    font-size: clamp(28px, 3.6vw, 44px);
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    color: var(--ds-t-tertiary);
+    max-width: 860px;
+    margin: 0 0 28px 0;
+    text-align: left;
+}
+
+/* Body & Caption: First sentence Primary (93%), continuation Secondary (50%) */
+.atlas-body,
+.atlas-caption {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.38;
+    letter-spacing: -0.01em;
+    color: var(--ds-t-secondary);
+    margin: 0;
+    text-align: left;
+}
+
+.atlas-caption {
+    margin-top: 20px;
+    max-width: 680px;
+}
+
+/* =========================================================================
+   Minimal Stage Surface & Modern 2026 iPhone 16 Pro / Pixel 9 Pro / Foldable Frames
+   ========================================================================= */
+.atlas-stage-card {
+    width: 100%;
+    background-color: var(--ds-t-card);
+    border-radius: 32px;
+    padding: clamp(32px, 5vw, 60px) clamp(20px, 4vw, 48px) clamp(8px, 2vw, 20px);
+}
+
+.phones-pair {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: clamp(12px, 4vw, 56px);
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.phone-col {
+    width: min(42vw, 330px);
+}
+
+/*
+ * Modern Phone Frame + Screen Video Geometry (900 x 1533 canvas)
+ * Screen cutout: 560 x 1196
+ */
+.phone-hardware {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 900 / 1533;
+    user-select: none;
+    /* Drawn by the browser so it fades out smoothly on any background */
+    filter: drop-shadow(0 28px 32px rgba(15, 18, 28, 0.16)) drop-shadow(0 6px 10px rgba(15, 18, 28, 0.10));
+}
+
+.phone-frame-overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    display: block;
+    pointer-events: none;
+}
+
+.phone-screen-video {
+    position: absolute;
+    z-index: 1;
+    object-fit: cover;
+    display: block;
+    background: #0e0e10;
+}
+
+.phone-hardware.phone-ios .phone-screen-video {
+    left: 8.89%;
+    top: 3.65%;
+    width: 62.22%;
+    height: 78.02%;
+    border-radius: 12.1% / 5.7%;
+}
+
+.phone-hardware.phone-android .phone-screen-video {
+    left: 7.78%;
+    top: 3.65%;
+    width: 62.22%;
+    height: 78.02%;
+    border-radius: 12.1% / 5.7%;
+}
+
+/*
+ * Unfolded Foldable Frame + Screen Video Geometry (1200 x 1240 canvas)
+ * Screen cutout: [100, 100, 1100, 1137] (1000 x 1037), matching the 2076 x 2152 inner display
+ */
+.foldable-stage {
+    width: 100%;
+    max-width: 640px;
+    margin: 8px auto -24px;
+}
+
+.foldable-rotate-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    background: transparent;
+    pointer-events: none;
+    filter: drop-shadow(0 28px 32px rgba(15, 18, 28, 0.16)) drop-shadow(0 6px 10px rgba(15, 18, 28, 0.10));
+}
+
+.foldable-hardware {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1200 / 1240;
+    user-select: none;
+    filter: drop-shadow(0 28px 32px rgba(15, 18, 28, 0.16)) drop-shadow(0 6px 10px rgba(15, 18, 28, 0.10));
+}
+
+.foldable-frame-overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    display: block;
+    pointer-events: none;
+}
+
+.foldable-screen-video {
+    position: absolute;
+    z-index: 1;
+    left: 8.33%;
+    top: 8.06%;
+    width: 83.33%;
+    height: 83.63%;
+    border-radius: 4.6% / 4.4%;
+    object-fit: cover;
+    display: block;
+    background: #0e0e10;
+}
+
+/* =========================================================================
+   Left-Aligned Theme Pills
+   ========================================================================= */
+.atlas-pills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.atlas-pill {
+    border: none;
+    background: var(--ds-t-card);
+    color: var(--ds-t-secondary);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 160ms ease, color 160ms ease;
+}
+
+.atlas-pill:hover {
+    background: var(--ds-t-card-hover);
+    color: var(--ds-t-primary);
+}
+
+.atlas-pill.active {
+    background: var(--ds-t-super);
+    color: var(--ds-btn-fg);
+}
+
+/* =========================================================================
+   Borderless Feature Cards (rgba(17,17,17,0.04))
+   ========================================================================= */
+.atlas-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.atlas-card {
+    background: var(--ds-t-card);
+    border-radius: 28px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 28px;
+    overflow: hidden;
+}
+
+.atlas-card--wide {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    align-items: center;
+    gap: 32px;
+    padding: 36px 36px 16px;
+}
+
+.atlas-card-wide-copy {
+    align-self: start;
+}
+
+.atlas-preset-chips,
+.atlas-sound-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.atlas-preset-chips span {
+    background: var(--ds-bg);
+    color: var(--ds-t-primary);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 14px;
+}
+
+.atlas-pill-sm {
+    border: none;
+    background: var(--ds-bg);
+    color: var(--ds-t-primary);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 140ms ease, background-color 160ms ease;
+}
+
+.atlas-pill-sm:hover,
+.atlas-pill-sm.playing {
+    background: var(--ds-t-super);
+    color: var(--ds-btn-fg);
+}
+
+/* Full uncropped iPhone for Congratulations screen */
+.card-phone-full {
+    width: 265px;
+    margin: 4px auto -28px;
+}
+
+/* Large Apple Watch Series 10 & Pixel Watch 3 Pair */
+.card-watch-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    align-items: end;
+    margin-top: 4px;
+}
+
+.watch-item {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.watch-item img {
+    width: 100%;
+    max-width: 235px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 22px 24px rgba(15, 18, 28, 0.16)) drop-shadow(0 5px 8px rgba(15, 18, 28, 0.10));
+}
+
+.watch-item figcaption {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ds-t-secondary);
+}
+
+/* =========================================================================
+   Questions? Answers. (Left-Aligned Clean Rows)
+   ========================================================================= */
+.atlas-faq {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--ds-t-card-hover);
+}
+
+.atlas-faq-item {
+    border-bottom: 1px solid var(--ds-t-card-hover);
+    padding: 22px 0;
+}
+
+.atlas-faq-item summary {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ds-t-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.atlas-faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.atlas-faq-item summary::after {
+    content: "+";
+    font-size: 24px;
+    color: var(--ds-t-tertiary);
+    transition: transform 180ms ease;
+}
+
+.atlas-faq-item[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.atlas-faq-answer {
+    padding-top: 12px;
+}
+
+.atlas-faq-answer p {
+    margin: 0;
+    max-width: 700px;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ds-t-secondary);
+}
+
+.atlas-faq-answer a {
+    color: var(--ds-t-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* =========================================================================
+   Minimal Left-Aligned Footer
+   ========================================================================= */
+.atlas-footer {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 64px 32px 72px;
+}
+
+.atlas-footer-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: start;
+}
+
+.atlas-footer-credits {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--ds-t-tertiary);
+    font-size: 15px;
+}
+
+.atlas-footer-credits p {
+    margin: 0;
+}
+
+.atlas-footer-credits a {
+    color: var(--ds-t-secondary);
     text-decoration: none;
 }
-p{
-    margin-bottom: 24px;
-    max-width: 66%;
-}
-img{
-    width: 100%;
-}
-span{
-    display: block;
-    margin: 8px 0 24px 0;
-}
-.wrapper li{
-    font-size: 32px;
-    line-height: 48px;
-    margin-bottom: 16px;
-}
-a{
-    border-bottom: 2px solid #FEED07;
-}
-.wrapper li.soon{
-    opacity: .5;
-}
-/* 
-Sections
-*/
-.wrapper{
-    overflow-x: hidden;
-}
-section{
-    display: block;
-   
-    
-}
-.container{
-    margin:0 auto;
-    position: relative;
-    padding: 32px;
-    max-width: 1440px;
-}
-#s1{
-    background: var(--background_inverted);
-    color: var(--primary-inverted);
-}
-#s1 h2{
-    position: absolute;
-    bottom: 750px;
 
+.atlas-footer-credits a:hover {
+    color: var(--ds-t-primary);
 }
-#s2{
-    background: var(--background);
-    margin-top:-728px;
-    padding:585px 0 0 0;
-    color:#fff;
-}
-#s2 .container p:nth-child(3){
-    margin-bottom: 150px;
-}
-#s3{
-    background: var(--background_inverted);
-    color: var(--primary);
-    margin-top: -850px;
-    padding:728px 0 0 0;
-}
-#s3 p{
-    margin-bottom: 72px;
-}
-#s4{
-    background: var(--background);
-    color:#fff;
-    margin-top:-528px;
-    padding:440px 0 0 0;
-}
-footer{
-    margin-top: 72px;
-    opacity: .5;
-    font-size: 14px;
-}
-/* 
-Images
-*/
-.heroImage{
-    position: relative;
-    width: 1280px;
-    margin: 0 auto;
-    z-index: 100000;
-}
-img.hero{
-    display: block;
-    width: 1280px;
-    height: auto;
-}
-img.hero2{
-    display: block;
-    width: 1280px;
-    height: auto;
-    z-index: 100000;
-    margin:0 auto;
-}
-img.hero3{
-    display: block;
-    margin: 0 auto;
-    width: 1280px;
-    height: auto;
-    z-index: 100000;
-}
-.playBadge{
-    position: absolute;
-    width: 180px;
-    border-bottom: none;
-    right: 32px;
-    bottom: 260px;
-}
-.appstoreBadge{
-    position: absolute;
-    width: 157px;
-    border-bottom: none;
-    right: 32px;
-    bottom: 180px;
-    padding: 12px;
-}
-#s1 .playBadge{
-    bottom: auto;
-    top:610px;
-}
-#s1 .appstoreBadge{
-    bottom: auto;
-    top:543px;
-}
-.playBadge img{
-    width: 100%;
-    height: auto;
-}
-/* 
-Keyframe Animation
-*/
-@keyframes breathing{
-    0%{
-        transform: scale(.6); 
-    }
-    19.04%{
-        transform: scale(1);
-    }
-    53%{
-        transform: scale(1);
-    }
-    100%{
-        transform: scale(.6);
-    }
-}
-/* 
-Animation 
-*/
-.animation{
-    display: block;
-    position: absolute;
-    top: 430px;
-    width: 320px;
-    height: 320px;
-    left: calc(50% - 160px);
-    background: var(--background);
-}
-.animation img.sun{
-    width: 100%;
-    height: auto;
-    animation-fill-mode: forwards;
-    animation-name: breathing;
-    animation-duration: 19s;
-    animation-iteration-count: 4;
-    animation-timing-function: ease-in-out;
-}
-.animation img.lines{
-    z-index: 1000;
-    position: absolute;
-    left: 0;
-    bottom: 4px;
-    width: 100%;
-}
-/* 
-Responsive Styles 
-*/
-/* Mobile */
-@media only screen and (min-width:0px) and (max-width:767px) {
-    :root{
-        /* Colors */
-        --h1: 32px;
-        --h2: 28px;
-        --h3: 24px;
-        --h4: 20px;
-        --h5: 18px;
-        --body: 18px;
-        --body2: 14px;
-        --base-margin: 16px;
-        --base-margin_2: 32px;
-    }
-    p{
-        max-width: 100%;
-    }
-    section{
-        min-width: 100%;
-    }
-    .heroImage{
-        width: 100%;
-        transform: scale(1.8);
-        transform-origin: center top;
-        margin-top: 24px;
-    }
-    img.hero{
-        width: 100%;
-        z-index: 10000;
-    }
-    img.hero2{
-        display: block;
-        margin-top: 0;
-        width: 100%;
-        transform: scale(1.5);
-        transform-origin: center top;
-    }
-    img.hero3{
-        display: block;
-        margin-top: 0;
-        width: 100%;
-        transform: scale(1.5);
-        transform-origin: center top;
 
-    }
-    #s1{
-        z-index: 100;
-    }
-    #s1 h2{
-        position: relative;
-        top:0;
-        margin-top: 16px;
-        font-size: 24px;
-    }
-    #s1 .playBadge{
-        top:120px;
-        width: 110px;
-        right: 37px;
-    }
-    #s1 .appstoreBadge{
-        top: 75px;
-        width: 96px;
-        right: 32px;
-    }
-    #s2{
-        margin-top: -22%;
-        padding: 56% 0 0 0;
-       
-    }
-    #s2 .container p:nth-child(3){
-        margin-bottom: 150px;
-    }
-    #s3{
-        margin-top: -50%;
-        padding: 70% 0 0 0;
-    }
-    #s3 p{
-        margin-bottom: 72px;
-    }
-    #s4{
-        margin-top: -25%;
-        padding: 35% 0 0 0;
-    }
-    .animation{
-        top: 32%;
-        width: 30%;
-        left: calc(50% - 15%);
-        height: 30vw;
-    }
-    .animation img.lines {
-        bottom: auto;
-        width: 100%;
-        top: 42%;
-    }
-    li{
-        font-size: 24px;
-        line-height: 48px;
-        margin-bottom: 0px;
-    }
-    #s4 .playBadge {
-        bottom: 0;
-        position: relative;
-        display: block;
-        width: 180px;
-        margin-left: 24px;
-        margin-top: 24px;
-    }
-    #s4 .appstoreBadge{
-        bottom: 0;
-        position: relative;
-        display: block;
-        margin-left: 24px;
-    }
-    footer {
-        margin-top: 32px;
-    }
+.atlas-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
 }
-/* Tablet*/
-/* Mobile */
-@media only screen and (min-width:768px) and (max-width: 1023px) {
-    p{
-        max-width: 100%;
+
+.atlas-footer-links a {
+    color: var(--ds-t-secondary);
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 160ms ease;
+}
+
+.atlas-footer-links a:hover {
+    color: var(--ds-t-primary);
+}
+
+@media (max-width: 860px) {
+    .atlas-header,
+    .atlas-page,
+    .atlas-footer {
+        padding-left: 20px;
+        padding-right: 20px;
     }
-    section{
-        min-width: 768px;
+    .atlas-grid-2,
+    .atlas-card--wide,
+    .atlas-footer-inner {
+        grid-template-columns: 1fr;
     }
-    .heroImage{
-        width: 768px;
-    }
-    img.hero{
-        width: 768px;
-    }
-    img.hero2{
-        width: 768px;
-    }
-    img.hero3{
-        width: 768px;
-    }
-    #s1 h2 {
-        position: absolute;
-        bottom: 462px;
-    }
-    #s1 .playBadge{
-        top: 370px;
-    }
-    #s1 .appstoreBadge{
-        bottom: auto;
-        top:302px;
-    }
-    #s2{
-        margin-top:-450px;
-        padding:320px 0 0 0;
-    }
-    #s2 .container p:nth-child(3){
-        margin-bottom: 150px;
-    }
-    #s3{
-        margin-top: -525px;
-        padding: 435px 0 0 0;
-    }
-    #s3 p{
-        margin-bottom: 72px;
-    }
-    #s4{
-        margin-top: -332px;
-    padding: 270px 0 0 0;
-    }
-    .animation{
+    .atlas-header-links a {
         display: none;
     }
-}
-@media only screen and (min-width:1024px) and (max-width: 1280px) {
-    section{
-        min-width: 1024px;
-    }
-    .heroImage{
-        width: 1024px;
-    }
-    img.hero{
-        width: 1024px;
-    }
-    img.hero2{
-        width: 1024px;
-    }
-    img.hero3{
-        width: 1024px;
-    }
-    .playBadge{
-
-    }
-    .playBadge img{
-
-    }
-    .animation{
-        display: none;
-    }
-    #s1 h2 {
-        bottom: 602px;
-    }
-    #s1 .playBadge{
-        top: 493px;
-    }
-    #s1 .appstoreBadge{
-        bottom: auto;
-        top:426px;
-    }
-    #s2{
-        margin-top: -588px;
-        padding: 465px 0 0 0;
-    }
-    #s3{
-        margin-top: -692px;
-        padding: 575px 0 0 0;
-    }
-    #s4{
-        margin-top: -430px;
-        padding: 320px 0 0 0;
-    }
-}
-.privacy{
-    background: #fff;
-    padding: 32px;
-    margin: 0 auto;
-    max-width: 1024px;
-}
-.privacy ul{
-    list-style-type: disc;
-}
-.privacy ul li{
-    padding-bottom: 16px;
 }
