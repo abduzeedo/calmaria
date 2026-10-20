@@ -291,7 +291,7 @@ body {
     width: 100%;
     background-color: var(--ds-t-card);
     border-radius: 32px;
-    padding: clamp(32px, 5vw, 60px) clamp(20px, 4vw, 48px) clamp(8px, 2vw, 20px);
+    padding: clamp(32px, 5vw, 60px) clamp(20px, 4vw, 48px);
 }
 
 .phones-pair {
@@ -304,17 +304,17 @@ body {
 }
 
 .phone-col {
-    width: min(42vw, 330px);
+    width: min(33vw, 258px);
 }
 
 /*
- * Modern Phone Frame + Screen Video Geometry (900 x 1533 canvas)
+ * Phone Frame + Screen Video Geometry (704 x 1300 canvas, body centred with equal margins)
  * Screen cutout: 560 x 1196
  */
 .phone-hardware {
     position: relative;
     width: 100%;
-    aspect-ratio: 900 / 1533;
+    aspect-ratio: 704 / 1300;
     user-select: none;
     /* Drawn by the browser so it fades out smoothly on any background */
     filter: drop-shadow(0 28px 32px rgba(15, 18, 28, 0.16)) drop-shadow(0 6px 10px rgba(15, 18, 28, 0.10));
@@ -338,18 +338,18 @@ body {
 }
 
 .phone-hardware.phone-ios .phone-screen-video {
-    left: 8.89%;
-    top: 3.65%;
-    width: 62.22%;
-    height: 78.02%;
+    left: 10.37%;
+    top: 4.08%;
+    width: 79.55%;
+    height: 92%;
     border-radius: 12.1% / 5.7%;
 }
 
 .phone-hardware.phone-android .phone-screen-video {
-    left: 7.78%;
-    top: 3.65%;
-    width: 62.22%;
-    height: 78.02%;
+    left: 9.94%;
+    top: 3.92%;
+    width: 79.55%;
+    height: 92%;
     border-radius: 12.1% / 5.7%;
 }
 
@@ -360,7 +360,7 @@ body {
 .foldable-stage {
     width: 100%;
     max-width: 640px;
-    margin: 8px auto -24px;
+    margin: 0 auto;
 }
 
 .foldable-rotate-video {
@@ -483,7 +483,7 @@ body {
     grid-template-columns: 1fr 1.25fr;
     align-items: center;
     gap: 32px;
-    padding: 36px 36px 16px;
+    padding: 36px;
 }
 
 .atlas-card-wide-copy {
@@ -527,8 +527,8 @@ body {
 
 /* Full uncropped iPhone for Congratulations screen */
 .card-phone-full {
-    width: 265px;
-    margin: 4px auto -28px;
+    width: 207px;
+    margin: 8px auto 0;
 }
 
 /* Large Apple Watch Series 10 & Pixel Watch 3 Pair */
